@@ -1,0 +1,21 @@
+<div>
+    <h1>Register_page Krasimir</h1>
+    <form action="{% url 'register user' %}" method="post">
+        {{ form.username|placeholder:'Username' }}
+        {{ form.email|placeholder:'Email' }}
+        {{ form.password1|placeholder:'Password1' }}
+        {{ form.password2|placeholder:'Repeat password' }}
+{#        {{ form.password2 }}#}
+{#        {{ form.as_p }}#}
+        <button type="submit">Register</button>
+        <input type="hidden" name="next" value="{{ next }}">
+        {% csrf_token %}
+    </form>
+
+    <h1>
+        <p>
+            Already registered? <a href="{% url 'login user' %}">Log in</a>
+        </p>
+    </h1>
+
+</div>

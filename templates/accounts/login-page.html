@@ -1,0 +1,10 @@
+<div>
+    <h1>Login_page Krasimir</h1>
+    <form action="{% url 'login user' %}" method="post">
+    {{ form }}
+        <button type="submit">Log in</button>
+        <input type="hidden" name="next" value="{{ next }}">
+        {% csrf_token %}
+    </form>
+
+</div>
