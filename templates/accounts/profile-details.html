@@ -1,0 +1,19 @@
+{% include 'base/nav.html' %}
+
+
+<h1>Username: {{ object.username }}</h1>
+
+<h1>Email: {{ object.email }}</h1>
+
+{% if object.age %}
+    <h1>Age: {{ object.age }}</h1>
+{% endif %}
+
+{% if object.gender %}
+    <h1>Age: {{ object.gender }}</h1>
+{% endif %}
+
+{% if is_owner %}
+    <a href="{% url 'edit profile' pk=request.user.pk%}"> Edit profile</a>
+    <a href=""> Delete profile</a>
+{% endif %}

@@ -1,0 +1,25 @@
+{#<h4>This is the beggining of 'base/nav.html</h4>#}
+
+<h2>Logged in user: </h2>{{ request.user }}
+{#if not authenticated it will be "Anonimous"#}
+{% if request.user.is_authenticated %}
+    {#    <li> class ="nav-item"</li>#}
+    <i>Profile details</i>
+        <a href="{% url 'details user' pk=request.user.pk %}">Profile details</a>
+
+        <a href="{% url 'logout user' %}">Log out</a>
+
+{% else %}
+    {#    <li> class ="nav-item"</li>#}
+    <a href="{% url 'login user' %}">Login</a>
+
+        <a href="{% url 'register user' %}"></a>
+    <i>Register</i>
+
+{% endif %}
+
+
+{% block content %}
+{% endblock content %}
+
+{#<h4>This is the end of 'base/nav.html</h4>#}
