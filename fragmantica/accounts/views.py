@@ -4,7 +4,7 @@ from django.shortcuts import render
 
 # Create your views here.
 from django.urls import reverse_lazy
-from django.views.generic import CreateView, DetailView
+from django.views.generic import CreateView, DetailView, UpdateView, DeleteView
 
 from fragmantica.accounts.forms import UserCreateForm
 
@@ -42,5 +42,17 @@ class SignOutView(LogoutView):
 	next_page=reverse_lazy('index')
 
 
-# class UserEditView():
-# 	pass
+class UserEditView(UpdateView):
+	template_name='accounts/profile-edit-page.html'
+	model=UserModel
+	fields = ('username', 'first_name', 'last_name', 'gender', 'email')
+	# success_url = reverse_lazy('details user' kwargs)
+
+	def get_success_url(self):
+		return reverse_lazy('details user', kwargs={'pk':self.request.user.pk, })
+
+
+class UserDeleteView(DeleteView):
+	template_name='accounts/profile-delete-page.html'
+	model=UserModel
+	success_url = reverse_lazy('index')
