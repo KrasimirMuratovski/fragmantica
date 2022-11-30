@@ -19,5 +19,8 @@ from django.urls import path, include
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('accounts/', include('fragmantica.accounts.urls')),
+    path('perfumes/', include('fragmantica.perfumes.urls')),
+    path('designers/', include('fragmantica.designers.urls')),
+    path('notes/', include('fragmantica.notes.urls')),
     path('', include('fragmantica.common.urls')),
 ]

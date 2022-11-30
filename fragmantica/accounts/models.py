@@ -1,4 +1,4 @@
-#Accounts/model.py
+#accounts/model.py
 from enum import Enum
 
 from django.contrib.auth.models import AbstractUser

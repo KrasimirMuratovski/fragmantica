@@ -44,6 +44,9 @@ INSTALLED_APPS = [
     #MyApp
     'fragmantica.accounts',
     'fragmantica.common',
+    'fragmantica.perfumes',
+    'fragmantica.designers',
+    'fragmantica.notes',
 ]
 
 MIDDLEWARE = [
