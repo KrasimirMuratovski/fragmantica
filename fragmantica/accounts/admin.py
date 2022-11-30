@@ -13,7 +13,8 @@ UserModel=get_user_model()
 class FragUserAdmin(UserAdmin):
 	form=UserEditForm
 	add_form=UserCreateForm
-	fieldsets = ((None, {'fields': ('username', 'password',), }),
+	fieldsets = ((None,
+				  {'fields': ('username', 'password',), }),
 				 ('Personal info', {'fields': ('first_name', 'last_name', 'email', 'gender'), },),
 				 ('Permissions',
 				  {'fields': ('is_active', 'is_staff', 'is_superuser', 'groups', 'user_permissions',), },),

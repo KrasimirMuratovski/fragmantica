@@ -1,0 +1,11 @@
+<h1>KM Designer Edit page</h1>
+
+
+
+    <h2>Edit Designer</h2>
+    <form method="post" action="{% url 'edit designer' pk=object.pk %}">
+          {{ form }}
+
+        <button class="edit-btn" type="submit">Edit</button>
+        {% csrf_token %}
+    </form>

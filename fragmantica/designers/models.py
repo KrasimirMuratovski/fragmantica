@@ -16,7 +16,7 @@ class Designer(StrFromFieldsMixin, models.Model):
 	DESIGNER_YEAR_MAX=date.today().year
 
 	name=models.CharField(max_length=MAX_LEN_NAME, validators=(MinLengthValidator(MIN_LEN_NAME),),unique=True)
-	Photo = models.URLField(null=False, blank=False, )
+	photo = models.URLField(null=False, blank=False, )
 	slug = models.SlugField(unique=True, null=False, blank=True, )
 	since=models.PositiveIntegerField(validators=(MinValueValidator(DESIGNER_YEAR_MIN),MaxValueValidator(DESIGNER_YEAR_MAX),),)
 
