@@ -5,6 +5,7 @@ from django.core.validators import MinLengthValidator, MinValueValidator, MaxVal
 from django.db import models
 from django.utils.text import slugify
 
+from fragmantica.awards.models import Award
 from fragmantica.core.model_mixins import StrFromFieldsMixin
 
 
@@ -19,6 +20,8 @@ class Designer(StrFromFieldsMixin, models.Model):
 	photo = models.URLField(null=False, blank=False, )
 	slug = models.SlugField(unique=True, null=False, blank=True, )
 	since=models.PositiveIntegerField(validators=(MinValueValidator(DESIGNER_YEAR_MIN),MaxValueValidator(DESIGNER_YEAR_MAX),),)
+	description = models.TextField()
+	award=models.ManyToManyField(Award)
 
 	def save(self, *args, **kwargs):
 		super().save(*args, **kwargs)

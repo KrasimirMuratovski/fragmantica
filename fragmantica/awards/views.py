@@ -1,13 +1,13 @@
-#notes/views.py
+#awards./views.py
 # from django.urls import reverse_lazy
 from django.views.generic import DetailView
 
-from fragmantica.notes.models import Note
+from fragmantica.awards.models import Award
 
 
-class NoteDetailsView(DetailView):
+class AwardDetailsView(DetailView):
 	template_name = 'designers/details-designer.html'
-	model = Note
+	model = Award
 	fields = ('name', 'photo', 'since')
 
 	# def get_context_data(self, **kwargs):
