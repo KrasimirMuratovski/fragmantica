@@ -14,9 +14,9 @@ class Award(StrFromFieldsMixin, models.Model):
 	MAX_LEN_NAME=64
 
 	name=models.CharField(max_length=MAX_LEN_NAME, validators=(MinLengthValidator(MIN_LEN_NAME),),unique=True)
-	image = models.URLField(null=False, blank=False, )
+	logo = models.URLField(null=False, blank=False, )
 	slug = models.SlugField(unique=True, null=False, blank=True, )
-	description = models.TextField()
+	# description = models.TextField()
 
 	def save(self, *args, **kwargs):
 		super().save(*args, **kwargs)

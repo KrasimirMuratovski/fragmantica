@@ -2,21 +2,28 @@
 
 <h2>Logged in user: </h2>{{ request.user }}
 {#if not authenticated it will be "Anonimous"#}
+    <a href="{% url 'list designers' %}">Designers</a>
+    <a href="{% url 'list perfumes' %}">Perfumes</a>
+    <a href="{% url 'list notes' %}">Notes</a>
+{#    <a href="{% url 'list awa' %}">Awards</a>#}
 {% if request.user.is_authenticated %}
     {#    <li> class ="nav-item"</li>#}
     <i>Profile details</i>
-        <a href="{% url 'details user' pk=request.user.pk %}">Profile details</a>
-
-        <a href="{% url 'logout user' %}">Log out</a>
+    <a href="{% url 'details user' pk=request.user.pk %}">Profile details</a>
+    <a href="{% url 'logout user' %}">Log out</a>
 
 {% else %}
     {#    <li> class ="nav-item"</li>#}
     <a href="{% url 'login user' %}">Login</a>
 
-        <a href="{% url 'register user' %}"></a>
-    <i>Register</i>
+    <a href="{% url 'register user' %}">Register</a>
+
+{#    <i>Register</i>#}
 
 {% endif %}
+
+{#    <a href="{% url 'designers' %}"></a>#}
+
 
 
 {% block content %}

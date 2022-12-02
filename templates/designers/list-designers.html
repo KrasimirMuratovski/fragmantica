@@ -1,0 +1,12 @@
+<div>
+<ul>
+{% for designer in designers %}
+    <li>{{ designer.name }}
+
+    <a href="{% url 'details designer' pk=designer.pk %}">{{ designer.name }}</a>
+</li>
+{% endfor %}
+
+    <a class="edit-btn" href="javascript:history.back()">Go Back</a>
+</ul>
+</div>

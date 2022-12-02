@@ -27,7 +27,6 @@ class Note(StrFromFieldsMixin, models.Model):
 	image = models.URLField(null=False, blank=False, )
 	slug = models.SlugField(unique=True, null=False, blank=True, )
 	category = models.CharField(choices=Category.choices(),max_length=Category.max_len(),)
-
 	description = models.TextField()
 
 	def save(self, *args, **kwargs):

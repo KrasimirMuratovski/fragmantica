@@ -7,6 +7,7 @@ from django.db import models
 # Create your models here.
 from django.utils.text import slugify
 
+from fragmantica.awards.models import Award
 from fragmantica.core.model_mixins import StrFromFieldsMixin
 from fragmantica.designers.models import Designer
 from fragmantica.notes.models import Note
@@ -24,6 +25,7 @@ class Perfume(StrFromFieldsMixin, models.Model):
 	image = models.URLField(null=False,blank=False,)
 	designer=models.ForeignKey(Designer, on_delete=models.RESTRICT,)
 	note=models.ManyToManyField(Note,)
+	award=models.OneToOneField(Award,on_delete=models.RESTRICT,null=True, blank=True,)
 	slug = models.SlugField(unique=True, null=False, blank=True, )
 
 	def save(self, *args, **kwargs):

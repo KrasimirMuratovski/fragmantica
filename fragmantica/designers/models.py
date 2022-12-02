@@ -21,7 +21,7 @@ class Designer(StrFromFieldsMixin, models.Model):
 	slug = models.SlugField(unique=True, null=False, blank=True, )
 	since=models.PositiveIntegerField(validators=(MinValueValidator(DESIGNER_YEAR_MIN),MaxValueValidator(DESIGNER_YEAR_MAX),),)
 	description = models.TextField()
-	award=models.ManyToManyField(Award)
+	# award=models.ManyToManyField(Award)
 
 	def save(self, *args, **kwargs):
 		super().save(*args, **kwargs)

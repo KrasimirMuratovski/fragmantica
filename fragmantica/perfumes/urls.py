@@ -1,8 +1,8 @@
 from django.urls import path
 
-from fragmantica.common.views import index
+from fragmantica.perfumes.views import PerfumeListView, PerfumeDetailsView
 
-urlpatterns=(
-	# path('', index, name='index'),
-	# # path('', SignInView.as_view(), name='login user'),
+urlpatterns = (
+	path('', PerfumeListView.as_view(), name='list perfumes'),
+	path('<int:pk>/', PerfumeDetailsView.as_view(), name='details perfume'),
 )

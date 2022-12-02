@@ -1,0 +1,29 @@
+<h1>KM Note Details page</h1>
+
+
+<section id="car-details">
+    <h1>note Details</h1>
+    <div class="info-section">
+        <div class="car-header">
+            <!-- car image -->
+            <img class="car-img"
+                 src="{{ note.image }}"
+                 alt='note image'/>
+            <!-- type and model -->
+            <h1>{{ note.name }}</h1>
+            <h1>{{ note.category }}</h1>
+            {#                <a href="{% url 'details designer' pk=note.designer_id %}">{{ note.designer.name }}</a>#}
+
+            <h2>Perfumes with this note</h2>
+            <ul>
+                {% for single_perfume in note_perfumes %}
+                    <li>
+{#                    TODO:ManyToMany relation - call the _set.id#}
+                        <a href="{% url 'details perfume' pk=single_perfume.id %}">{{ single_perfume.name }}</a>
+                    </li>
+                {% endfor %}
+
+            </ul>
+
+        </div>
+        <a class="edit-btn" href="javascript:history.back()">Go Back</a>
