@@ -1,8 +1,33 @@
+{% load static %}
 {% include 'base/nav.html' %}
 
-
 {% block content %}
+    <h1>This is the index page</h1>
 
-<h1>This is the index page</h1>
+
+    <div class="container">
+        <div class="col-9">
+
+            <!-- Start Searchbar Form -->
+            <form class="searchbar" method="get" action="{% url 'index' %}">
+                {{ search_form }}
+                <button>
+                    <img src="{% static 'images/search.png' %}" height="18" alt="img2">
+                </button>
+                {% csrf_token %}
+            </form>
+            <!-- End Searchbar Form -->
+
+            <!-- Start Pet Photos Post Section -->
+            {% for perfume in perfumes %}
+                {% include 'partials/perfume-item.html' with perfume=perfume %}
+            {% endfor %}
+        </div>
+    </div>
 
 {% endblock content %}
+
+{##}
+{#{% for perfume in perfumes %}#}
+{#    {{ perfume.name }}#}
+{#{% endfor %}#}
