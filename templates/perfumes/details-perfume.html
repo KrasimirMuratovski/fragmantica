@@ -1,5 +1,22 @@
 <h1>KM Perfume Details page</h1>
 
+{% if is_owner %}
+
+
+         <div class="addComments">
+            <div class="reaction">
+                <h3>
+                    <i class="far fa-smile"></i>
+                </h3>
+            </div>
+                <form method="post" action="{% url 'comment perfume' perfume_id=perfume.pk %}">
+                    {{ comment_form }}
+                    <button type="submit">Post</button>
+                    {% csrf_token %}
+                </form>
+        </div>
+{% endif %}
+
 
 <section id="car-details">
     <h1>Perfume Details</h1>
@@ -19,16 +36,19 @@
             <ul>
                 {% for single_note in perfume_notes %}
                     <li>
-                    {#                    TODO:ManyToMany relation - call the forward obj.id#}
+                        {#                    TODO:ManyToMany relation - call the forward obj.id#}
                         <a href="{% url 'details note' pk=single_note.id %}">{{ single_note.name }}</a>
                     </li>
                 {% endfor %}
             </ul>
 
-{% if perfume.award %}
-    <h2>Award:</h2>
-    {{ perfume.award.name }}
+            {% if perfume.award %}
+                <h2>Award:</h2>
+                {{ perfume.award.name }}
 
-{% endif %}
+            {% endif %}
         </div>
-        <a class="edit-btn" href="javascript:history.back()">Go Back</a>
+{#    </div>#}
+
+
+    <a class="edit-btn" href="javascript:history.back()">Go Back</a>

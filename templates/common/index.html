@@ -18,12 +18,27 @@
             </form>
             <!-- End Searchbar Form -->
 
-            <!-- Start Pet Photos Post Section -->
             {% for perfume in perfumes %}
                 {% include 'partials/perfume-item.html' with perfume=perfume %}
             {% endfor %}
         </div>
     </div>
+
+
+{##TODO remove#}
+{#        <div class="addComments">#}
+{#            <div class="reaction">#}
+{#                <h3>#}
+{#                    <i class="far fa-smile"></i>#}
+{#                </h3>#}
+{#            </div>#}
+{#                <form method="post" action="{% url 'comment perfume' perfume_id=1 %}">#}
+{#                    {{ comment_form }}#}
+{#                    <button type="submit">Post</button>#}
+{#                    {% csrf_token %}#}
+{#                </form>#}
+{#        </div>#}
+
 
 {% endblock content %}
 

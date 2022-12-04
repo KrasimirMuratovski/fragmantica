@@ -1,4 +1,5 @@
-from django.shortcuts import render
+from django.contrib.auth.decorators import login_required
+from django.shortcuts import render, redirect
 
 # Create your views here.
 
@@ -19,14 +20,10 @@ def index(request):
     perfumes = Perfume.objects.all()
 
     if search_pattern:
-        perfumes = perfumes.filter(tagged_pets__name__icontains=search_pattern)
-
-    # photos = [apply_likes_count(photo) for photo in photos]
-    # photos = [apply_user_liked_photo(photo) for photo in photos]
-    # print(photos)
+        perfumes = perfumes.filter(name__icontains=search_pattern)
     context = {
         'perfumes': perfumes,
-        # 'comment_form': PhotoCommentForm(),
+        # 'comment_form': PerfumeCommentForm(),
         'search_form': search_form,
     }
 
@@ -35,6 +32,21 @@ def index(request):
         'common/index.html',
         context,
     )
+
+##TODO remove#}
+# @login_required
+# def comment_perfume(request, perfume_id):
+#     perfume = Perfume.objects.filter(pk=perfume_id).get()
+#
+#     form = PerfumeCommentForm(request.POST)
+#
+#     if form.is_valid():
+#         comment = form.save(commit=False)  # Does not persist to DB
+#         comment.perfume = perfume
+#         comment.save()
+#
+#     return redirect('index')
+
 
 #
 # @login_required
@@ -52,20 +64,6 @@ def index(request):
 #
 #     return redirect(get_photo_url(request, photo_id))
 #
-#
-# @login_required
-# def comment_photo(request, photo_id):
-#     photo = Photo.objects.filter(pk=photo_id) \
-#         .get()
-#
-#     form = PhotoCommentForm(request.POST)
-#
-#     if form.is_valid():
-#         comment = form.save(commit=False)  # Does not persist to DB
-#         comment.photo = photo
-#         comment.save()
-#
-#     return redirect('index')
 #
 
 #
