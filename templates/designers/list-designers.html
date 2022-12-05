@@ -1,3 +1,10 @@
+{% load static %}
+{% include 'base/nav.html' %}
+
+{% block content %}
+    <h1>KM Designers List page</h1>
+
+
 <div>
 <ul>
 {% for designer in designers %}
@@ -10,3 +17,5 @@
     <a class="edit-btn" href="javascript:history.back()">Go Back</a>
 </ul>
 </div>
+
+{% endblock %}

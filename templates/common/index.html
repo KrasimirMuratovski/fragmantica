@@ -4,45 +4,26 @@
 {% block content %}
     <h1>This is the index page</h1>
 
-
-    <div class="container">
-        <div class="col-9">
-
-            <!-- Start Searchbar Form -->
-            <form class="searchbar" method="get" action="{% url 'index' %}">
-                {{ search_form }}
-                <button>
-                    <img src="{% static 'images/search.png' %}" height="18" alt="img2">
-                </button>
-                {% csrf_token %}
-            </form>
-            <!-- End Searchbar Form -->
-
-            {% for perfume in perfumes %}
-                {% include 'partials/perfume-item.html' with perfume=perfume %}
-            {% endfor %}
-        </div>
-    </div>
-
-
-{##TODO remove#}
-{#        <div class="addComments">#}
-{#            <div class="reaction">#}
-{#                <h3>#}
-{#                    <i class="far fa-smile"></i>#}
-{#                </h3>#}
-{#            </div>#}
-{#                <form method="post" action="{% url 'comment perfume' perfume_id=1 %}">#}
-{#                    {{ comment_form }}#}
-{#                    <button type="submit">Post</button>#}
-{#                    {% csrf_token %}#}
-{#                </form>#}
-{#        </div>#}
-
+{#    Search results if any#}
+{#{% if search_pattern %}#}
+{##}
+{##}
+            {#Result of the search - perfumes#}
+{#            {% for perfume in perfumes %}#}
+{#                <li>#}
+{#                    <a href="{% url 'details perfume' pk=perfume.pk %}">{{ perfume.name }}</a>#}
+{#                </li>#}
+{#                {% include 'partials/perfume-item.html' with perfume=perfume %}#}
+{#            {% endfor %}#}
+{##}
+            {#Result of the search - designers#}
+{#            {% for designer in designers %}#}
+{#                <li>#}
+{#                    <a href="{% url 'details designer' pk=designer.pk %}">{{ designer.name }}</a>#}
+{#                </li>#}
+{#            {% endfor %}#}
+{#{% endif %}#}
+{#  End search results if any#}
 
 {% endblock content %}
 
-{##}
-{#{% for perfume in perfumes %}#}
-{#    {{ perfume.name }}#}
-{#{% endfor %}#}

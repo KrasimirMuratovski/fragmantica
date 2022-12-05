@@ -3,11 +3,7 @@ from django import forms
 # from petstagram.core.form_mixins import DisabledFormMixin
 # from petstagram.pets.models import Pet
 
-
-# `ModelForm` and `Form`:
-# - `ModelForm` binds to models
-# - `Form` is detached from models
-from fragmantica.common.models import PerfumeComment
+from fragmantica.common.models import PerfumeComment, PerfumePossession
 
 
 class PerfumeCommentForm(forms.ModelForm):
@@ -16,13 +12,19 @@ class PerfumeCommentForm(forms.ModelForm):
         fields = ('text',)
         widgets = {
             'text': forms.Textarea(
-                attrs={
-                    'cols': 40,
-                    'rows': 10,
-                    'placeholder': 'Add comment...'
-                },
-            ),
-        }
+                attrs={'cols': 40,'rows': 10,'placeholder': 'Add comment...'},),}
+
+
+
+class PerfumePossessionForm(forms.ModelForm):
+    class Meta:
+        model = PerfumePossession
+        fields = ('possession',)
+        widgets = {'possession': forms.Select()}
+        # widgets = {'possession': forms.ModelChoiceField()}
+
+
+
 
 #
 #

@@ -1,32 +1,62 @@
+{% load static %}
 {#<h4>This is the beggining of 'base/nav.html</h4>#}
 
-<h2>Logged in user: </h2>{{ request.user }}
-{#if not authenticated it will be "Anonimous"#}
-    <a href="{% url 'list designers' %}">Designers</a>
-    <a href="{% url 'list perfumes' %}">Perfumes</a>
-    <a href="{% url 'list notes' %}">Notes</a>
-{#    <a href="{% url 'list awa' %}">Awards</a>#}
-{% if request.user.is_authenticated %}
-    {#    <li> class ="nav-item"</li>#}
-    <i>Profile details</i>
-    <a href="{% url 'details user' pk=request.user.pk %}">Profile details</a>
-    <a href="{% url 'logout user' %}">Log out</a>
+<div class="container">
+    <div class="col-9">
 
-{% else %}
-    {#    <li> class ="nav-item"</li>#}
-    <a href="{% url 'login user' %}">Login</a>
+        {#Search form#}
+        <form class="searchbar" method="get" action="{% url 'index' %}">
+            {{ search_form }}
+            <button>
+                <img src="{% static 'images/search.png' %}" height="18" alt="img2">
+            </button>
+            {% csrf_token %}
+        </form>
+        {#End of the Search form#}
 
-    <a href="{% url 'register user' %}">Register</a>
+        {#Navigation bar#}
+        <h2>Logged in user: </h2>{{ request.user }}
+        {#if not authenticated it will be "Anonimous"#}
+        <a href="{% url 'list designers' %}">Designers</a>
+        <a href="{% url 'list perfumes' %}">Perfumes</a>
+        <a href="{% url 'list notes' %}">Notes</a>
+        {#    <a href="{% url 'list awa' %}">Awards</a>#}
+        {% if request.user.is_authenticated %}
+            {#    <li> class ="nav-item"</li>#}
+            <i>Profile details</i>
+            <a href="{% url 'details user' pk=request.user.pk %}">Profile details</a>
+            <a href="{% url 'logout user' %}">Log out</a>
 
-{#    <i>Register</i>#}
+        {% else %}
+            {#    <li> class ="nav-item"</li>#}
+            <a href="{% url 'login user' %}">Login</a>
 
-{% endif %}
-
-{#    <a href="{% url 'designers' %}"></a>#}
+            <a href="{% url 'register user' %}">Register</a>
 
 
+        {% endif %}
 
-{% block content %}
-{% endblock content %}
+        {#End of the Navigation bar#}
 
-{#<h4>This is the end of 'base/nav.html</h4>#}
+
+        {#    Search results if any#}
+        {% if search_pattern %}
+            {#Result of the search - perfumes#}
+            {% for perfume in perfumes %}
+                <li>
+                    <a href="{% url 'details perfume' pk=perfume.pk %}">{{ perfume.name }}</a>
+                </li>
+                {#                {% include 'partials/perfume-item.html' with perfume=perfume %}#}
+            {% endfor %}
+
+            {#Result of the search - designers#}
+            {% for designer in designers %}
+                <li>
+                    <a href="{% url 'details designer' pk=designer.pk %}">{{ designer.name }}</a>
+                </li>
+            {% endfor %}
+        {% endif %}
+        {#  End search results if any#}
+
+        {% block content %}
+        {% endblock content %}
