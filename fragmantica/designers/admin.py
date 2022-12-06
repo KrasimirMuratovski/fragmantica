@@ -1,3 +1,4 @@
+#designers/admin.py
 from django.contrib import admin
 
 from fragmantica.designers.models import Designer
@@ -5,7 +6,10 @@ from fragmantica.designers.models import Designer
 
 @admin.register(Designer)
 class DesignerAdmin(admin.ModelAdmin):
-	pass
+	list_display = ('id', 'name', 'since')
+	list_filter = ('name', 'since')
+	search_fields = ('name',)
+
 
 
 # list_display = ('pk', 'publication_date', 'pets')

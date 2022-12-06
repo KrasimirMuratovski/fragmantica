@@ -3,7 +3,7 @@ class StrFromFieldsMixin:
 
     def __str__(self):
         fields = [(str_field, getattr(self, str_field, None)) for str_field in self.str_fields]
-        return ', '.join(f'{name} = {value}' for (name, value) in fields)
+        return ', '.join(f'{value}' for (_, value) in fields)
 
 
 class ChoicesEnumMixin:

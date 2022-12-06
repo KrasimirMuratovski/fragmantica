@@ -41,7 +41,7 @@ class FragUser(AbstractUser):
 	nickname=models.CharField(unique=True, max_length=MAX_LEN_NICK_NAME, validators=(MinLengthValidator(MIN_LEN_NICK_NAME),validate_only_letters),null=True, blank=True)
 	first_name=models.CharField(max_length=MAX_LEN_FIRST_NAME, validators=(MinLengthValidator(MIN_LEN_FIRST_NAME),validate_only_letters),)
 	last_name=models.CharField(max_length=MAX_LEN_LAST_NAME, validators=(MinLengthValidator(MIN_LEN_LAST_NAME),validate_only_letters),)
-	email=models.EmailField(unique=True)
+	email=models.EmailField(unique=True, null=True, blank=True)
 	age=models.PositiveIntegerField(null=True, blank=True)
 	gender=models.CharField(choices=Gender.gender_choices(), max_length=Gender.max_len())
 	perfume=models.ManyToManyField(Perfume)

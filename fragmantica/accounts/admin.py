@@ -11,6 +11,13 @@ UserModel=get_user_model()
 
 @admin.register(UserModel)
 class FragUserAdmin(UserAdmin):
+	list_display = ('id', 'first_name', 'last_name', 'email', 'age')
+	list_filter = ('first_name', 'last_name')
+	search_fields = ('first_name', 'last_name','email',)
+	sortable_by = ('id', 'first_name', 'last_name','email',)
+	save_on_top=True
+
+
 	form=UserEditForm
 	add_form=UserCreateForm
 	fieldsets = ((None,

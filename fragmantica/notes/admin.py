@@ -1,9 +1,11 @@
+#notes/admin.py
 from django.contrib import admin
-
-# Register your models here.
 from fragmantica.notes.models import Note
 
 
 @admin.register(Note)
 class NoteAdmin(admin.ModelAdmin):
-	pass
+	list_display = ('id', 'name', 'category')
+	list_filter = ('name', 'category')
+	search_fields = ('name','category')
+
