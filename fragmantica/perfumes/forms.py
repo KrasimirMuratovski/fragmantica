@@ -15,13 +15,19 @@ class PerfumeCommentForm(forms.ModelForm):
                 attrs={'cols': 40,'rows': 10,'placeholder': 'Add comment...'},),}
 
 
-
 class PerfumePossessionForm(forms.ModelForm):
     class Meta:
         model = PerfumePossession
         fields = ('possession',)
         widgets = {'possession': forms.Select()}
         # widgets = {'possession': forms.ModelChoiceField()}
+
+
+class PerfumeCommentEditForm(forms.ModelForm):
+    class Meta:
+        model = PerfumeComment
+        fields = ('text',)
+        # field_classes = {"username": UsernameField}
 
 
 

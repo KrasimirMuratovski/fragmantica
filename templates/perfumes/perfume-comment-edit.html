@@ -1,0 +1,10 @@
+<h1>This is perfume comment edit form</h1>
+
+<div class="edit-delete edit-photo">
+    <h2>Edit Comment</h2>
+    <form action="{% url 'perfume comment edit' perfume_id=perfume_id%}" method="post">
+        {{ form.as_p }}
+        <button class="edit-btn" type="submit">Edit</button>
+        {% csrf_token %}
+    </form>
+</div>

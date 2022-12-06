@@ -2,10 +2,11 @@
 # from django.urls import reverse_lazy
 from django.contrib.auth import get_user_model
 from django.contrib.auth.decorators import login_required
-from django.shortcuts import redirect
+from django.shortcuts import redirect, render
 from django.views.generic import DetailView, ListView
 
-from fragmantica.perfumes.forms import PerfumeCommentForm, PerfumePossessionForm
+from fragmantica.common.models import PerfumeComment
+from fragmantica.perfumes.forms import PerfumeCommentForm, PerfumePossessionForm, PerfumeCommentEditForm
 from fragmantica.perfumes.models import Perfume
 
 UserModel=get_user_model()
@@ -21,6 +22,7 @@ class PerfumeDetailsView(DetailView):
         context = super().get_context_data(**kwargs)
         context['perfume_notes'] = self.object.note.all()
         context['perfume_comments'] = self.object.perfumecomment_set.all()
+        context['request_user']= self.request.user
         context['perfume_possession'] = self.object.perfumepossession_set.all()
         context['comment_form'] = PerfumeCommentForm()
         context['possession_form'] = PerfumePossessionForm()
@@ -62,8 +64,21 @@ def possession_perfume(request, perfume_id):
     return redirect('details perfume', perfume_id)
 
 
+@login_required
+def perfume_comment_edit(request, perfume_id):
+    comment=PerfumeComment.objects.get(pk=perfume_id)
+    # perfume_id=comment.perfume.pk
+    if request.method == 'GET':
+        form = PerfumeCommentEditForm(instance=comment)
+    else:
+        form = PerfumeCommentEditForm(request.POST, instance=comment)
+        if form.is_valid():
+            form.save()
+            # return redirect('details perfume', pk=perfume_id)
+            return redirect('index')
 
-
+    context = {'form': form, 'comment':comment, 'perfume_id':perfume_id}
+    return render(request, 'perfumes/perfume-comment-edit.html', context)
 
 # TODO:remove/ context:
 # context['logged_in'] = self.object.perfumecomment_set.all()
@@ -84,3 +99,11 @@ def possession_perfume(request, perfume_id):
 # context['user_id'] = self.user.pk
 # profile.user = request.user
 # user_id = request.user.pk,
+
+
+# current_user=self.object.fraguser_set
+# print(current_user)
+# queryset=self.object.fraguser_set.all().values('password')
+# print(str(queryset.query))
+# print(str(queryset))
+# print(str(queryset.query.username))

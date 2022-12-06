@@ -77,18 +77,29 @@
 
         <a class="edit-btn" href="javascript:history.back()">Go Back</a>
 
-{% if perfume_possession %}
-{{ perfume_possession.possession }}
-{% endif %}
+        {% if perfume_possession %}
+            {{ perfume_possession.possession }}
+        {% endif %}
 
         {#        Perfume comments#}
         {% if perfume_comments %}
             <h2>Comments:</h2>
-            {% for perfume_comment in perfume_comments %}
 
-                {{ perfume_comment.publication_date_and_time }}
-                {{ perfume_comment.user }}
-                {{ perfume_comment.text }}
+            {% for perfume_comment in perfume_comments %}
+                <ul>
+                    <li>
+                        {{ perfume_comment.publication_date_and_time }}
+                        {{ perfume_comment.user }}
+                        {{ perfume_comment.text }}
+                        {{ perfume_comment.id }}
+                        {% if perfume_comment.user == request_user %}
+                            <h4>The owner</h4>
+                        <a href="{% url 'perfume comment edit' perfume_id=perfume_comment.id %}">Edit comment</a>
+                            {% else %}
+                            <h4>Not owner</h4>
+                            </li>
+                            </ul>
+                        {% endif %}
             {% endfor %}
         {% endif %}
 {#       End Perfume comments#}
