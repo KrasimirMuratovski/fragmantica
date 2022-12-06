@@ -7,11 +7,8 @@ urlpatterns = (
 	path('', PerfumeListView.as_view(), name='list perfumes'),
 	path('<int:pk>/', PerfumeDetailsView.as_view(), name='details perfume'),
 	path('posession/<int:perfume_id>/', possession_perfume, name='possession perfume'),
-	path('comment/<int:perfume_id>/', include([
-		path('', comment_perfume, name='comment perfume'),
-		path('edit/', perfume_comment_edit, name='perfume comment edit'),
-												]
-											)
-		 ),
+	path('comment/<int:perfume_id>/', comment_perfume, name='comment perfume'),
+	# path('edit/<int:perfume_id>/', perfume_comment_edit, name='perfume comment edit'),
+	path('edit/<int:comment_id>/', perfume_comment_edit, name='perfume comment edit'),
 
-			)
+		 )

@@ -65,8 +65,8 @@ def possession_perfume(request, perfume_id):
 
 
 @login_required
-def perfume_comment_edit(request, perfume_id):
-    comment=PerfumeComment.objects.get(pk=perfume_id)
+def perfume_comment_edit(request, comment_id):
+    comment=PerfumeComment.objects.get(pk=comment_id)
     # perfume_id=comment.perfume.pk
     if request.method == 'GET':
         form = PerfumeCommentEditForm(instance=comment)
@@ -77,7 +77,7 @@ def perfume_comment_edit(request, perfume_id):
             # return redirect('details perfume', pk=perfume_id)
             return redirect('index')
 
-    context = {'form': form, 'comment':comment, 'perfume_id':perfume_id}
+    context = {'form': form, 'comment':comment, 'comment_id':comment_id}
     return render(request, 'perfumes/perfume-comment-edit.html', context)
 
 # TODO:remove/ context:
