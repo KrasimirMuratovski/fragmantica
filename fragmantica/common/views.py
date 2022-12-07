@@ -39,3 +39,5 @@ def index(request):
         context,
     )
 
+def about(request):
+    return render(request, 'common/about_page.html')

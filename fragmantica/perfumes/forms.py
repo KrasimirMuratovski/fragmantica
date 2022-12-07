@@ -20,6 +20,7 @@ class PerfumePossessionForm(forms.ModelForm):
     class Meta:
         model = PerfumePossession
         fields = ('possession',)
+        labels = {'possession': 'Change your relation:',}
         # widgets = {'possession': forms.Select()}
         # widgets = {'possession': forms.ModelChoiceField()}
 

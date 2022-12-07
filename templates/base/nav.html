@@ -27,16 +27,12 @@
             <i>Profile details</i>
             <a href="{% url 'details user' pk=request.user.pk %}">Profile details</a>
             <a href="{% url 'logout user' %}">Log out</a>
-
         {% else %}
             {#    <li> class ="nav-item"</li>#}
             <a href="{% url 'login user' %}">Login</a>
-
             <a href="{% url 'register user' %}">Register</a>
-
-
         {% endif %}
-
+        <a href="{% url 'about' %}">About</a>
         {#End of the Navigation bar#}
 
 

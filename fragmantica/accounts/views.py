@@ -21,6 +21,13 @@ class UserDetailsView(DetailView):
 # TODO - adding field 'is_owner' or whatever
 # TODO - self.object is the selected by pk // self.request.user is the logged in user
 		context['is_owner']=self.request.user==self.object
+		# queryset=self.object.perfumepossession_set.all()
+		# print(str(queryset.query))
+		# context['your_perfumes']=self.object.perfumepossession_set.all()
+		try:
+			context['user_perfumes'] = self.object.perfumepossession_set.all()
+		except:
+			context['user_perfumes'] = None
 
 		return context
 

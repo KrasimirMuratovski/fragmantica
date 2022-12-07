@@ -25,9 +25,12 @@ class PerfumeDetailsView(DetailView):
         context['perfume_notes'] = self.object.note.all()
         context['perfume_comments'] = self.object.perfumecomment_set.all()
         context['request_user']= self.request.user
-        context['perfume_possession'] = self.object.perfumepossession_set.all()
         context['comment_form'] = PerfumeCommentForm()
         context['possession_form'] = PerfumePossessionForm()
+        try:
+            context['perfume_possession'] = self.object.perfumepossession_set.get().possession
+        except:
+            context['perfume_possession'] ='Not defined yet.'
 
         return context
 
@@ -55,14 +58,19 @@ def comment_perfume(request, perfume_id):
 @login_required
 def possession_perfume(request, perfume_id):
     perfume = Perfume.objects.filter(pk=perfume_id).get()
+    perfume.perfumepossession_set.all().delete()
     form = PerfumePossessionForm(request.POST)
 
     if form.is_valid():
+        posession=possession_perfume
+        print(posession)
         possession = form.save(commit=False)  # Does not persist to DB
         possession.perfume = perfume
         possession.user = request.user
         possession.save()
     return redirect('details perfume', perfume_id)
+
+
 
 
 @login_required
