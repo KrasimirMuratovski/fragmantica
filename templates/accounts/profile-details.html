@@ -1,5 +1,7 @@
+{% load static %}
 {% include 'base/nav.html' %}
 
+{% block content %}
 
 <h1>Username: {{ object.username }}</h1>
 
@@ -21,3 +23,6 @@
     <a href="{% url 'edit user' pk=request.user.pk%}"> Edit profile</a>
     <a href="{% url 'delete user' pk=request.user.pk %}"> Delete profile</a>
 {% endif %}
+
+            <a class="edit-btn" href="javascript:history.back()">Go Back</a>
+{% endblock %}

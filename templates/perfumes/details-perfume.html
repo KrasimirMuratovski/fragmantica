@@ -1,3 +1,7 @@
+{% load static %}
+{% include 'base/nav.html' %}
+
+{% block content %}
 <h1>KM Perfume Details page</h1>
 
 <section id="perfume-details">
@@ -95,6 +99,7 @@
                         {% if perfume_comment.user == request_user %}
                             <h4>The owner</h4>
                         <a href="{% url 'perfume comment edit' comment_id=perfume_comment.id %}">Edit comment</a>
+                        <a href="{% url 'perfume comment delete' comment_id=perfume_comment.id %}">Delete comment</a>
                             {% else %}
                             <h4>Not owner</h4>
 
@@ -102,4 +107,8 @@
                         {% endif %}
             {% endfor %}
         {% endif %}
+
 {#       End Perfume comments#}
+
+                <a class="edit-btn" href="javascript:history.back()">Go Back</a>
+{% endblock %}

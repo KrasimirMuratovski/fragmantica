@@ -17,6 +17,7 @@
         {#Navigation bar#}
         <h2>Logged in user: </h2>{{ request.user }}
         {#if not authenticated it will be "Anonimous"#}
+        <a href="{% url 'index' %}">FRAGMANTICA</a>
         <a href="{% url 'list designers' %}">Designers</a>
         <a href="{% url 'list perfumes' %}">Perfumes</a>
         <a href="{% url 'list notes' %}">Notes</a>

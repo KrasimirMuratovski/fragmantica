@@ -2,15 +2,16 @@
 {% include 'base/nav.html' %}
 
 {% block content %}
-h1>This is perfume comment edit form</h1>
+<h1>This is perfume comment delete form</h1>
 
 <div class="edit-delete edit-photo">
     <h2>Edit Comment</h2>
-    <form action="{% url 'perfume comment edit' comment_id=comment_id%}" method="post">
+    <form action="{% url 'perfume comment delete' comment_id=comment_id%}" method="post">
         {{ form.as_p }}
-        <button class="edit-btn" type="submit">Edit</button>
+        <button class="edit-btn" type="submit">Delete comment</button>
         {% csrf_token %}
     </form>
 </div>
+
             <a class="edit-btn" href="javascript:history.back()">Go Back</a>
 {% endblock %}

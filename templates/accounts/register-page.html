@@ -1,6 +1,8 @@
-{#{% include 'base/nav.html' %}#}
 {% load placeholders %}
+{% load static %}
+{% include 'base/nav.html' %}
 
+{% block content %}
 {#{% block content %}#}
 <div>
     <!-- CSS only -->
@@ -27,4 +29,6 @@
 
 </div>
 
-{#{% endblock content %}#}
+
+            <a class="edit-btn" href="javascript:history.back()">Go Back</a>
+{% endblock %}

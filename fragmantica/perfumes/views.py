@@ -6,10 +6,12 @@ from django.shortcuts import redirect, render
 from django.views.generic import DetailView, ListView
 
 from fragmantica.common.models import PerfumeComment
-from fragmantica.perfumes.forms import PerfumeCommentForm, PerfumePossessionForm, PerfumeCommentEditForm
+from fragmantica.perfumes.forms import PerfumeCommentForm, PerfumePossessionForm, PerfumeCommentEditForm, \
+    PerfumeCommentDeleteForm
 from fragmantica.perfumes.models import Perfume
 
 UserModel=get_user_model()
+
 
 class PerfumeDetailsView(DetailView):
     context_object_name = 'perfume'
@@ -34,7 +36,6 @@ class PerfumeListView(ListView):
     context_object_name = 'perfumes'
     template_name = 'perfumes/list-perfumes.html'
     model = Perfume
-
 
 
 @login_required
@@ -79,6 +80,27 @@ def perfume_comment_edit(request, comment_id):
 
     context = {'form': form, 'comment':comment, 'comment_id':comment_id}
     return render(request, 'perfumes/perfume-comment-edit.html', context)
+
+
+
+@login_required
+def perfume_comment_delete(request, comment_id):
+    comment=PerfumeComment.objects.get(pk=comment_id)
+    # perfume_id=comment.perfume.pk
+    if request.method == 'GET':
+        form = PerfumeCommentDeleteForm(instance=comment)
+    else:
+        form = PerfumeCommentDeleteForm(request.POST, instance=comment)
+        if form.is_valid():
+            form.save()
+            # return redirect('details perfume', pk=perfume_id)
+            return redirect('index')
+
+    context = {'form': form, 'comment':comment, 'comment_id':comment_id}
+    return render(request, 'perfumes/perfume-comment-delete.html', context)
+
+
+
 
 # TODO:remove/ context:
 # context['logged_in'] = self.object.perfumecomment_set.all()

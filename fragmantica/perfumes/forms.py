@@ -4,6 +4,7 @@ from django import forms
 # from petstagram.pets.models import Pet
 
 from fragmantica.common.models import PerfumeComment, PerfumePossession
+from fragmantica.core.form_mixins import DisabledFormMixin
 
 
 class PerfumeCommentForm(forms.ModelForm):
@@ -19,7 +20,7 @@ class PerfumePossessionForm(forms.ModelForm):
     class Meta:
         model = PerfumePossession
         fields = ('possession',)
-        widgets = {'possession': forms.Select()}
+        # widgets = {'possession': forms.Select()}
         # widgets = {'possession': forms.ModelChoiceField()}
 
 
@@ -27,13 +28,26 @@ class PerfumeCommentEditForm(forms.ModelForm):
     class Meta:
         model = PerfumeComment
         fields = ('text',)
-        # field_classes = {"username": UsernameField}
-
-
-
 
 #
-#
+class PerfumeCommentDeleteForm(DisabledFormMixin,forms.ModelForm):
+    disabled_fields = ('text',)
+    class Meta:
+        model = PerfumeComment
+        fields = ('text',)
+
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self._disable_fields()
+
+
+    def save(self, commit=True):
+        if commit:
+            self.instance.delete()
+        return self.instance
+
+
+# #######################
 # class PetBaseForm(forms.ModelForm):
 #     class Meta:
 #         model = Pet
@@ -90,4 +104,4 @@ class PerfumeCommentEditForm(forms.ModelForm):
 #             self.instance.delete()
 #         return self.instance
 #
-#
+

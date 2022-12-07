@@ -38,3 +38,4 @@ def index(request):
         'common/index.html',
         context,
     )
+

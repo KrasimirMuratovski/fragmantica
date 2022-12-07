@@ -1,4 +1,7 @@
 {% load static %}
+{% include 'base/nav.html' %}
+
+{% block content %}
 
 <link rel="stylesheet" href="{% static 'css/profile.css' %}">
 <h1>KM User Edit page</h1>
@@ -40,3 +43,7 @@
         {% csrf_token %}
     </form>
 </div>
+
+
+            <a class="edit-btn" href="javascript:history.back()">Go Back</a>
+{% endblock %}
