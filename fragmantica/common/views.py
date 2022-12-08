@@ -1,3 +1,4 @@
+from django.contrib.auth import get_user_model
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, redirect
 
@@ -11,6 +12,9 @@ from django.shortcuts import render, redirect
 from fragmantica.common.forms import SearchPerfumeForm
 from fragmantica.designers.models import Designer
 from fragmantica.perfumes.models import Perfume
+
+UserModel=get_user_model()
+
 
 def index(request):
     search_form = SearchPerfumeForm(request.GET)

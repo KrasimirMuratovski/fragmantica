@@ -1,8 +1,8 @@
 #common/forms
 from django import forms
+from django.contrib.auth import get_user_model
 
-from fragmantica.common.models import PerfumeComment
-
+UserModel=get_user_model()
 
 class SearchPerfumeForm(forms.Form):
     search_expression = forms.CharField(max_length=50,required=False,)

@@ -2,10 +2,11 @@ from django import forms
 #
 # from petstagram.core.form_mixins import DisabledFormMixin
 # from petstagram.pets.models import Pet
+from django.contrib.auth import get_user_model
 
 from fragmantica.common.models import PerfumeComment, PerfumePossession
 from fragmantica.core.form_mixins import DisabledFormMixin
-
+UserModel=get_user_model()
 
 class PerfumeCommentForm(forms.ModelForm):
     class Meta:

@@ -2,10 +2,11 @@
 # from django.urls import reverse_lazy
 from django.contrib.auth import get_user_model
 from django.contrib.auth.decorators import login_required
+from django.contrib.auth.models import User
 from django.shortcuts import redirect, render
 from django.views.generic import DetailView, ListView
 
-from fragmantica.common.models import PerfumeComment
+from fragmantica.common.models import PerfumeComment, PerfumePossession
 from fragmantica.perfumes.forms import PerfumeCommentForm, PerfumePossessionForm, PerfumeCommentEditForm, \
     PerfumeCommentDeleteForm
 from fragmantica.perfumes.models import Perfume
@@ -90,6 +91,7 @@ def perfume_comment_edit(request, comment_id):
     return render(request, 'perfumes/perfume-comment-edit.html', context)
 
 
+##########Created 08/12/2022AM#############
 
 @login_required
 def perfume_comment_view(request, comment_id):
@@ -106,6 +108,28 @@ def perfume_comment_view(request, comment_id):
 
     context = {'form': form, 'comment':comment, 'comment_id':comment_id}
     return render(request, 'perfumes/perfume-comment-view.html',context)
+
+##########Created 08/12/2022AM#############
+@login_required
+def perfume_comments_per_user_all(request, user_id):
+    user_comments=PerfumeComment.objects.filter(user_id=user_id)
+    # user=User.objects.all().get(pk=user_id)
+    # user_comments=user.perfumecomment_set.all()
+    context = {'user_comments':user_comments, }
+    return render(request, 'perfumes/perfume-comments-per-user-all.html',context)
+#####################
+
+
+
+##########Created 08/12/2022AM#############
+@login_required
+def perfumes_per_user_all(request, user_id):
+    user_perfumes=PerfumePossession.objects.filter(user_id=user_id)
+    # user=User.objects.all().get(pk=user_id)
+    # user_comments=user.perfumecomment_set.all()
+    context = {'user_perfumes':user_perfumes, }
+    return render(request, 'perfumes/perfumes-per-user-all.html',context)
+#####################
 
 
 

@@ -1,0 +1,20 @@
+{% load static %}
+{% include 'base/nav.html' %}
+
+{% block content %}
+<h1>This is user comments list </h1>
+
+    {% if user_comments %}
+        <h2>User comments: </h2>
+        {% for user_comment in user_comments %}
+{#            {{ user_comment.pk }}#}
+            {{ user_comment.text }}
+            {{ user_comment.publication_date_and_time }}
+                <a href="{% url 'perfume comment view' comment_id=user_comment.pk %}">Details:{{ user_comment.perfume.name }} </a>
+        {% endfor %}
+{% else %}
+        <h2>No user comments yet! </h2>
+
+    {% endif %}
+            <a class="edit-btn" href="javascript:history.back()">Go Back</a>
+{% endblock %}
