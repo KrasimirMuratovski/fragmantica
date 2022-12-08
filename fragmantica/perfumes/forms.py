@@ -29,6 +29,7 @@ class PerfumeCommentEditForm(forms.ModelForm):
     class Meta:
         model = PerfumeComment
         fields = ('text',)
+        widgets={'text':forms.Textarea(attrs={'cols': 48, 'rows':10},),}
 
 #
 class PerfumeCommentDeleteForm(DisabledFormMixin,forms.ModelForm):

@@ -29,6 +29,12 @@ class UserDetailsView(DetailView):
 		except:
 			context['user_perfumes'] = None
 
+		try:
+			context['user_comments'] = self.object.perfumecomment_set.all()
+		except:
+			context['user_comments'] = None
+
+
 		return context
 
 

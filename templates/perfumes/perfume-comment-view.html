@@ -1,0 +1,14 @@
+{% load static %}
+{% include 'base/nav.html' %}
+{% block content %}
+
+
+    <h1>Perfume: {{ comment.perfume.name }}</h1>
+    <h1>Comment: {{ comment.text }}</h1>
+    <h1>Date and time posted: {{ comment.publication_date_and_time }}</h1>
+
+    <a href="{% url 'perfume comment edit' comment_id=comment.pk %}">Edit comment</a>
+    <a href="{% url 'perfume comment delete' comment_id=comment.pk %}">Delete
+
+    <a class="edit-btn" href="javascript:history.back()">Go Back</a>
+{% endblock %}

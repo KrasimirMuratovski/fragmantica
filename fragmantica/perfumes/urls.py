@@ -1,7 +1,7 @@
 from django.urls import path, include
 
 from fragmantica.perfumes.views import PerfumeListView, PerfumeDetailsView, comment_perfume, possession_perfume, \
-	perfume_comment_edit, perfume_comment_delete
+	perfume_comment_edit, perfume_comment_delete, perfume_comment_view
 
 urlpatterns = (
 	path('', PerfumeListView.as_view(), name='list perfumes'),
@@ -11,6 +11,7 @@ urlpatterns = (
 	path('comment/<int:perfume_id>/', comment_perfume, name='comment perfume'),
 	# path('edit/<int:perfume_id>/', perfume_comment_edit, name='perfume comment edit'),
 	path('edit/<int:comment_id>/', perfume_comment_edit, name='perfume comment edit'),
+	path('comment_view/<int:comment_id>/', perfume_comment_view, name='perfume comment view'),
 	path('delete/<int:comment_id>/', perfume_comment_delete, name='perfume comment delete'),
 
 		 )

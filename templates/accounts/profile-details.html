@@ -25,11 +25,19 @@
     {% endif %}
 
     {% if user_perfumes %}
-
+{#        <a href="{% url 'perfume comment view' comment_id=user_comment.pk %}">Details:{{ user_comment.perfume.name }} </a>#}
         <h2>User perfumes: </h2>
-        {% for possession in user_perfumes %}
+        {% for perfume_possession in user_perfumes %}
 {#            {{ possession.perfume.name }}#}
-                <a href="{% url 'details perfume' pk=possession.perfume.pk %}">{{ possession.perfume.name }} ({{ possession.possession }}) </a>
+                <a href="{% url 'details perfume' pk=perfume_possession.perfume.pk %}">{{ perfume_possession.perfume.name }} ({{ perfume_possession.possession }}) </a>
+        {% endfor %}
+
+        <h2>User comments: </h2>
+        {% for user_comment in user_comments %}
+{#            {{ user_comment.pk }}#}
+            {{ user_comment.text }}
+            {{ user_comment.publication_date_and_time }}
+                <a href="{% url 'perfume comment view' comment_id=user_comment.pk %}">Details:{{ user_comment.perfume.name }} </a>
         {% endfor %}
 
 

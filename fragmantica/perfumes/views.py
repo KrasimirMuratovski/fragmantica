@@ -48,8 +48,8 @@ def comment_perfume(request, perfume_id):
 
     if form.is_valid():
         comment = form.save(commit=False)  # Does not persist to DB
-        comment.perfume = perfume
-        comment.user = request.user
+        comment.perfume = perfume#Attach the related perfume
+        comment.user = request.user#Attach the related user
         comment.save()
     return redirect('index')
 
@@ -88,6 +88,24 @@ def perfume_comment_edit(request, comment_id):
 
     context = {'form': form, 'comment':comment, 'comment_id':comment_id}
     return render(request, 'perfumes/perfume-comment-edit.html', context)
+
+
+
+@login_required
+def perfume_comment_view(request, comment_id):
+    comment=PerfumeComment.objects.get(pk=comment_id)
+    # perfume_id=comment.perfume.pk
+    if request.method == 'GET':
+        form = PerfumeCommentEditForm()
+    else:
+        form = PerfumeCommentEditForm(request.POST)
+        if form.is_valid():
+            form.save()
+            # return redirect('details perfume', pk=perfume_id)
+            return redirect('index')
+
+    context = {'form': form, 'comment':comment, 'comment_id':comment_id}
+    return render(request, 'perfumes/perfume-comment-view.html',context)
 
 
 
