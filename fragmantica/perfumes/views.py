@@ -120,14 +120,22 @@ def perfume_comments_per_user_all(request, user_id):
 #####################
 
 
-
 ##########Created 08/12/2022AM#############
 @login_required
 def perfumes_per_user_all(request, user_id):
-    user_perfumes=PerfumePossession.objects.filter(user_id=user_id)
+    user_perfume_objects = []
+    user_possession_ids=PerfumePossession.objects.filter(user_id=user_id)#queryset of the possession for user
+    for user_perfume_id in user_possession_ids:
+        # print(user_perfume_id.id)
+        # print(user_perfume_id.perfume_id)
+        perfume=Perfume.objects.filter(pk=user_perfume_id.perfume_id).get()
+        user_perfume_objects.append(perfume)
+        # print(perfume.name)
+    # print(user_perfume_ids)
+
     # user=User.objects.all().get(pk=user_id)
     # user_comments=user.perfumecomment_set.all()
-    context = {'user_perfumes':user_perfumes, }
+    context = {'user_perfume_objects':user_perfume_objects, }
     return render(request, 'perfumes/perfumes-per-user-all.html',context)
 #####################
 

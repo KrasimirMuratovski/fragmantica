@@ -4,11 +4,14 @@
 {% block content %}
 <h1>This is user perfumes list </h1>
 
-    {% if user_perfumes %}
-        <h2>User comments: </h2>
-        {% for user_perfume in user_perfumes %}
-            {{ user_perfume.pk }}
-            {{ user_perfume.name }}
+    {% if user_perfume_objects %}
+        <h2>User Perfumes: </h2>
+        {% for user_perfume in user_perfume_objects %}
+                <a href="{% url 'details perfume' pk=user_perfume.pk %}">{{ user_perfume.name }}</a>
+{#            {{ user_perfume.pk }}#}
+{#            {{ user_perfume.name }}#}
+{#            {{ user_perfume.designer }}#}
+{#            {{ user_perfume.year }}#}
 {#            {{ user_perfume.publication_date_and_time }}#}
 {#                <a href="{% url 'perfume comment view' comment_id=user_perfume.pk %}">Details:{{ user_comment.perfume.name }} </a>#}
         {% endfor %}
