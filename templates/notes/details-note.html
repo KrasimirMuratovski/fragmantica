@@ -45,7 +45,9 @@
 
                             <h2>Name of the note: {{ note.name }}</h2>
                             <h2>Category of the note: {{ note.category }}</h2>
-                            <h3>Perfumes with this note:</h3>
+
+                            <h2>Perfumes with this note:</h2>
+                        {% if note_perfumes %}
                             <ul>
                                 {% for single_perfume in note_perfumes %}
                                     <li>
@@ -54,6 +56,9 @@
                                     </li>
                                 {% endfor %}
                             </ul>
+                            {% else %}
+                            <h4>There are no such perfumes in the database.</h4>
+                        {% endif %}
                         </div>
                         <h1><a class="btn btn-primary" href="javascript:history.back()">Go Back</a></h1>
                     </div>

@@ -47,6 +47,7 @@ class SignUpView(CreateView):
 	# model=UserModel
 	# fields=('username', 'password')
 	success_url = reverse_lazy('index')
+	# success_url = reverse_lazy('login user')
 
 
 class SignOutView(LogoutView):
