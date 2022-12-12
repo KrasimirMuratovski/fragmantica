@@ -14,7 +14,7 @@ class PerfumeCommentForm(forms.ModelForm):
         fields = ('text',)
         widgets = {
             'text': forms.Textarea(
-                attrs={'cols': 40,'rows': 10,'placeholder': 'Add comment...'},),}
+                attrs={'cols': 80,'rows': 10,'placeholder': 'Add comment...'},),}
 
 
 class PerfumePossessionForm(forms.ModelForm):

@@ -1,0 +1,46 @@
+                        {#                    Begin of the nested card 6 - perfume comments#}
+                        <div class="card text-bg-light mb-3" style="max-width: 48rem;">
+                            <div class="card-body">
+                                <h4 class="card-title">Perfume comments:</h4>
+                                <div>
+                                    {% if perfume_comments %}
+                                        <p class="card-text">
+                                            {% for perfume_comment in perfume_comments %}
+                                                <ul>
+                                                    <h4>{{ perfume_comment.publication_date_and_time }}</h4>
+                                                    <h4>{{ perfume_comment.user }}</h4>
+                                                    <h4>{{ perfume_comment.text }}</h4>
+                                                    <h4>{{ perfume_comment.id }}</h4>
+                                                    {% if perfume_comment.user == request_user %}
+                                                        <a href="{% url 'perfume comment edit' comment_id=perfume_comment.id %}">Edit
+                                                            comment</a>
+                                                        <a href="{% url 'perfume comment delete' comment_id=perfume_comment.id %}">Delete
+                                                            comment</a>
+                                                    {% endif %}
+                                                </ul>
+                                            {% endfor %}
+                                    {% else %}
+                                        <h4>Not yet comments for this perfume</h4>
+                                    {% endif %}
+                                </div>
+                            </div>
+                        </div>
+                        {#                    End of the nested card 6 - perfume comments#}
+
+
+<div class="card">
+        <div class="text">
+            <ul>
+                                                    <h4>{{ perfume_comment.publication_date_and_time }}</h4>
+                                                    <h4>{{ perfume_comment.user }}</h4>
+                                                    <h4>{{ perfume_comment.text }}</h4>
+                                                    <h4>{{ perfume_comment.id }}</h4>
+                                                    {% if perfume_comment.user == request_user %}
+                                                        <a href="{% url 'perfume comment edit' comment_id=perfume_comment.id %}">Edit
+                                                            comment</a>
+                                                        <a href="{% url 'perfume comment delete' comment_id=perfume_comment.id %}">Delete
+                                                            comment</a>
+                                                    {% endif %}
+                                                </ul>
+        </div>
+</div>

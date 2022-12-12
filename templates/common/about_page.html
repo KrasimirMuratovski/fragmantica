@@ -1,19 +1,24 @@
 {% load static %}
 {% include 'base/nav.html' %}
-
 {% block content %}
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Fragmantica About page</title>
-</head>
-<body>
-<h1>Fragmantica - about the site:</h1>
-<h3>Educational 'Django' project for 'Python web' exam defense.</h3>
-</body>
-</html>
+    <div class="contaier">
+        <div class="card">
+            <img class="card-img" src="{% static '/images/Fragmantica_main.jpg' %}" alt="Background image">
+            <div class="card-body card-img-overlay" style="color: coral;">
+                <div class="card text-bg-light mb-3" style="max-width: 128rem;">
+                    <div class="card-header">Fragmantica - about the site:</div>
+                    <div class="card-body">
+                          <p class="card-text">Educational 'Django' project for 'Python web' exam defense.
+                          Replica of the most popular perfume database site Fragrantica </p>
+                    </div>
+                </div>
+                <a class="edit-btn" href="javascript:history.back()">Go Back</a>
+            </div>
+        </div>
+    </div>
 
-            <a class="edit-btn" href="javascript:history.back()">Go Back</a>
+
+
+
 {% endblock %}
