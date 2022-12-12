@@ -2,15 +2,31 @@
 {% include 'base/nav.html' %}
 
 {% block content %}
-<div>
-    <h1>Login_page Krasimir</h1>
-    <form action="{% url 'login user' %}" method="post">
-    {{ form }}
-        <button type="submit">Log in</button>
-        <input type="hidden" name="next" value="{{ next }}">
-        {% csrf_token %}
-    </form>
 
-</div>
-            <a class="edit-btn" href="javascript:history.back()">Go Back</a>
+    <div class="contaier">
+        <div class="card">
+            <img class="card-img" src="{% static '/images/Fragmantica_main.jpg' %}" alt="Background image">
+            <div class="card-body card-img-overlay" style="color: coral;">
+                <div class="card text-bg-light mb-3" style="max-width: 40rem;">
+                    <div class="card-header"> <h1>Login page:</h1></div>
+                    <div class="card-body">
+                        <div>
+                            <form action="{% url 'login user' %}" method="post">
+                                {{ form }}
+                                <button class="btn btn-secondary">Yes</button>
+{#                                <button type="submit">Log in</button>#}
+                                <input type="hidden" name="next" value="{{ next }}">
+                                {% csrf_token %}
+                            </form>
+                        </div>
+                        <h1><a class="btn btn-primary" href="javascript:history.back()">Go Back</a></h1>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+
 {% endblock %}

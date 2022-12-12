@@ -2,20 +2,47 @@
 {% include 'base/nav.html' %}
 
 {% block content %}
-    <h1>KM Designers List page</h1>
 
 
-<div>
-<ul>
-{% for designer in designers %}
-    <li>{{ designer.name }}
-
-    <a href="{% url 'details designer' pk=designer.pk %}">{{ designer.name }}</a>
-</li>
-{% endfor %}
-
-    <a class="edit-btn" href="javascript:history.back()">Go Back</a>
-</ul>
-</div>
+    {#    Old content#}
+    {#    #}
+    {#    <h1>KM Designers List page</h1>#}
+    {##}
+    {#    <div>#}
+    {#<ul>#}
+    {#{% for designer in designers %}#}
+    {#    <li>{{ designer.name }}#}
+    {##}
+    {#    <a href="{% url 'details designer' pk=designer.pk %}">{{ designer.name }}</a>#}
+    {#</li>#}
+    {#{% endfor %}#}
+    {##}
+    {#    <a class="edit-btn" href="javascript:history.back()">Go Back</a>#}
+    {#</ul>#}
+    {#</div>#}
+    {#    End of the  Old content#}
+    <div class="contaier">
+        <div class="card">
+            <img class="card-img" src="{% static '/images/Fragmantica_main.jpg' %}" alt="Background image">
+            <div class="card-body card-img-overlay" style="color: coral;">
+                <div class="card text-bg-light mb-3" style="max-width: 60rem;">
+                    <div class="card-header"><h1>Perfume designers in the database:</h1></div>
+                    <div class="card-body">
+                        <div class="info-section">
+                            <div>
+                                <ul>
+                                    {% for designer in designers %}
+                                        <li>{{ designer.name }}
+                                            <a href="{% url 'details designer' pk=designer.pk %}">{{ designer.name }}</a>
+                                        </li>
+                                    {% endfor %}
+                                </ul>
+                            </div>
+                            <h1><a class="btn btn-primary" href="javascript:history.back()">Go Back</a></h1>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
 
 {% endblock %}

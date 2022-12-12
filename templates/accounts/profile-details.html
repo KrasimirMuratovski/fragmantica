@@ -2,64 +2,92 @@
 {% include 'base/nav.html' %}
 
 {% block content %}
+    {##}
+    {#    Old content#}
+    {#    <h1>Username: {{ object.username }}</h1>#}
+    {##}
+    {#    <h1>Email: {{ object.email }}</h1>#}
+    {##}
+    {#    <h1>First name: {{ object.first_name }}</h1>#}
+    {##}
+    {#    <h1>Last name: {{ object.last_name }}</h1>#}
+    {##}
+    {#    {% if object.age %}#}
+    {#        <h1>Age: {{ object.age }}</h1>#}
+    {#    {% endif %}#}
+    {##}
+    {#    {% if object.gender %}#}
+    {#        <h1>Gender: {{ object.gender }}</h1>#}
+    {#    {% endif %}#}
+    {##}
+    {#    {% if is_owner %}#}
+    {#        <a href="{% url 'edit user' pk=request.user.pk %}"> Edit profile</a>#}
+    {#        <a href="{% url 'delete user' pk=request.user.pk %}"> Delete profile</a>#}
+    {#    {% endif %}#}
+    {##}
+    {##}
+    {#    <h2>User Perfumes: </h2>#}
+    {##}
+    {#List of perfumes per user#}
+    {#    <a href="{% url 'perfumes per user all' user_id=user_pk %}">List of your perfumes: </a>#}
+    {#End of List of perfumes per user##}
+    {##}
+    {#    <h2>User comments: </h2>#}
+    {##}
+    {#List of comments per user#}
+    {#    <a href="{% url 'perfume comments per user all' user_id=user_pk %}">List of your comments: </a>#}
+    {#End of List of comments per user##}
+    {#    Old content end#}
+    {#    #}
 
-    <h1>Username: {{ object.username }}</h1>
+    <div class="contaier">
+        <div class="card">
+            <img class="card-img" src="{% static '/images/Fragmantica_main.jpg' %}" alt="Background image">
+            <div class="card-body card-img-overlay" style="color: coral;">
+                <div class="card text-bg-light mb-3" style="max-width: 60rem;">
+                    <div class="card-header"><h1>Your profile details:</h1></div>
+                    <div class="card-body">
+                        <div>
+                            <h2>Username: {{ object.username }}</h2>
 
-    <h1>Email: {{ object.email }}</h1>
+                            <h2>Email: {{ object.email }}</h2>
 
-    <h1>First name: {{ object.first_name }}</h1>
+                            <h2>First name: {{ object.first_name }}</h2>
 
-    <h1>Last name: {{ object.last_name }}</h1>
+                            <h2>Last name: {{ object.last_name }}</h2>
 
-    {% if object.age %}
-        <h1>Age: {{ object.age }}</h1>
-    {% endif %}
+                            {% if object.age %}
+                                <h1>Age: {{ object.age }}</h1>
+                            {% endif %}
 
-    {% if object.gender %}
-        <h1>Gender: {{ object.gender }}</h1>
-    {% endif %}
+                            {% if object.gender %}
+                                <h2>Gender: {{ object.gender }}</h2>
+                            {% endif %}
 
-    {% if is_owner %}
-        <a href="{% url 'edit user' pk=request.user.pk %}"> Edit profile</a>
-        <a href="{% url 'delete user' pk=request.user.pk %}"> Delete profile</a>
-    {% endif %}
-
-
-{#    {% if user_perfumes %}#}
-                {#List of comments per user#}
-        <a href="{% url 'perfumes per user all' user_id=user_pk %}">List of your perfumes: </a>
-        {#End of List of comments per user##}
-
-{##}
-{#        <h2>User perfumes: </h2>#}
-{#        {% for perfume_possession in user_perfumes %}#}
-            {#            {{ possession.perfume.name }}#}
-{#            <a href="{% url 'details perfume' pk=perfume_possession.perfume.pk %}">{{ perfume_possession.perfume.name }}#}
-{#                ({{ perfume_possession.possession }}) </a>#}
-{#        {% endfor %}#}
-{#    {% endif %}#}
+                            {% if is_owner %}
+                                <a href="{% url 'edit user' pk=request.user.pk %}"> Edit profile</a>
+                                <a href="{% url 'delete user' pk=request.user.pk %}"> Delete profile</a>
+                            {% endif %}
 
 
+                            <h2>User Perfumes: </h2>
 
+                            {#List of perfumes per user#}
+                            <a href="{% url 'perfumes per user all' user_id=user_pk %}">List of your perfumes: </a>
+                            {#End of List of perfumes per user##}
 
+                            <h2>User comments: </h2>
 
+                            {#List of comments per user#}
+                            <a href="{% url 'perfume comments per user all' user_id=user_pk %}">List of your
+                                comments: </a>
+                            {#End of List of comments per user##}
+                        </div>
+                        <h1><a class="btn btn-primary" href="javascript:history.back()">Go Back</a></h1>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 
-{#    {% if user_comments %}#}
-        <h2>User comments: </h2>
-
-        {#List of comments per user#}
-        <a href="{% url 'perfume comments per user all' user_id=user_pk %}">List of your comments: </a>
-        {#End of List of comments per user##}
-
-
-        {#            The bellow list has been replaced with a link to deicated page for the comments#}
-{#        {% for user_comment in user_comments %}#}
-{#            {{ user_comment.text }}#}
-{#            {{ user_comment.publication_date_and_time }}#}
-{#            <a href="{% url 'perfume comment view' comment_id=user_comment.pk %}">Details:{{ user_comment.perfume.name }} </a>#}
-{#        {% endfor %}#}
-        {#            The list above has been replaced with a link to deicated page for the comments#}
-{#    {% endif %}#}
-
-    <a class="edit-btn" href="javascript:history.back()">Go Back</a>
 {% endblock %}
