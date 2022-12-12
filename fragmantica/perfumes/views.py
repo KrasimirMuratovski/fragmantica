@@ -28,10 +28,15 @@ class PerfumeDetailsView(DetailView):
         context['request_user']= self.request.user
         context['comment_form'] = PerfumeCommentForm()
         context['possession_form'] = PerfumePossessionForm()
+        possession_dict={'have_it':'I have it',
+                        'had_it':'I had it',
+                        'want_it':'I want it'
+                        }
         try:
-            context['perfume_possession'] = self.object.perfumepossession_set.get().possession
+            possession = self.object.perfumepossession_set.get().possession
         except:
-            context['perfume_possession'] ='Not defined yet.'
+            possession ='Not defined yet.'
+        context['perfume_possession']=possession_dict[possession]
 
         return context
 
