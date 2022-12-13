@@ -6,6 +6,7 @@ from django.db import models
 from django.utils.text import slugify
 
 from fragmantica.core.model_mixins import StrFromFieldsMixin
+# from fragmantica.perfumes.models import Perfume
 
 
 class Award(StrFromFieldsMixin, models.Model):

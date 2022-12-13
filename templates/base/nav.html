@@ -57,6 +57,9 @@
                         <div class="col-auto">
                             <a href="{% url 'list notes' %}">Notes</a>
                         </div>
+                        <div class="col-auto">
+                            <a href="{% url 'list awards' %}">Awards</a>
+                        </div>
 
                         {% if request.user.is_authenticated %}
                             <div class="col-auto">

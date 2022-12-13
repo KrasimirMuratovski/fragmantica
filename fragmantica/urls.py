@@ -22,5 +22,6 @@ urlpatterns = [
     path('perfumes/', include('fragmantica.perfumes.urls')),
     path('designers/', include('fragmantica.designers.urls')),
     path('notes/', include('fragmantica.notes.urls')),
+    path('awards/', include('fragmantica.awards.urls')),
     path('', include('fragmantica.common.urls')),
 ]
