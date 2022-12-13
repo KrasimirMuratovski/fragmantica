@@ -42,8 +42,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-
-    #MyApp
+    #MyApps
     'fragmantica.accounts',
     'fragmantica.common',
     'fragmantica.perfumes',
@@ -96,16 +95,15 @@ DATABASES = {
 }
 
 
-
 # DATABASES = {
 #     'default': {
 #         'ENGINE': 'django.db.backends.postgresql',
-#         'NAME': 'mydatabase',
-#         'USER': 'mydatabaseuser',
-#         'PASSWORD': 'mypassword',
+#         'NAME': 'fragmantica_pg_db',
+#         'USER': 'postgres-user',
+#         'PASSWORD': 'password',
 #         'HOST': '127.0.0.1',
 #         'PORT': '5432',
-#     }
+#     },
 # }
 
 # Password validation
