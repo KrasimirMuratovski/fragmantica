@@ -21,7 +21,7 @@ class Perfume(StrFromFieldsMixin, models.Model):
 	PERFUME_YEAR_MAX=date.today().year#TODO - add auto year
 
 	name=models.CharField(max_length=PERFUME_NAME_MAX_LEN, validators=(MinLengthValidator(PERFUME_NAME_MIN_LEN),), unique=True)
-	year=models.IntegerField(validators=(MinValueValidator(PERFUME_YEAR_MIN),MaxValueValidator(PERFUME_YEAR_MAX),),)
+	year_created=models.IntegerField(validators=(MinValueValidator(PERFUME_YEAR_MIN), MaxValueValidator(PERFUME_YEAR_MAX),), )
 	image = models.URLField(null=False,blank=False,)
 	designer=models.ForeignKey(Designer, on_delete=models.RESTRICT,)
 	note=models.ManyToManyField(Note,)
