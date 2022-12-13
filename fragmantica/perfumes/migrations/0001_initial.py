@@ -17,7 +17,7 @@ class Migration(migrations.Migration):
             fields=[
                 ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
                 ('name', models.CharField(max_length=32, unique=True, validators=[django.core.validators.MinLengthValidator(32)])),
-                ('year', models.DateField(validators=[django.core.validators.MinValueValidator(1960), django.core.validators.MaxValueValidator(2022)])),
+                ('year', models.IntegerField(validators=[django.core.validators.MinValueValidator(1960), django.core.validators.MaxValueValidator(2022)])),
             ],
         ),
     ]
