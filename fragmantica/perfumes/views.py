@@ -18,7 +18,7 @@ class PerfumeDetailsView(DetailView):
     context_object_name = 'perfume'
     template_name = 'perfumes/details-perfume.html'
     model = Perfume
-    fields = ('name', 'year', 'image', 'designer', 'note')
+    fields = ('name', 'released', 'image', 'designer', 'note')
 
 #note/s must be put in the context/ManyToMany Relation
     def get_context_data(self, **kwargs):
@@ -30,12 +30,13 @@ class PerfumeDetailsView(DetailView):
         context['possession_form'] = PerfumePossessionForm()
         possession_dict={'have_it':'I have it',
                         'had_it':'I had it',
-                        'want_it':'I want it'
+                        'want_it':'I want it',
+                         'not_defined_yet':'Not defined yet.',
                         }
         try:
             possession = self.object.perfumepossession_set.get().possession
         except:
-            possession ='Not defined yet.'
+            possession ='not_defined_yet'
         context['perfume_possession']=possession_dict[possession]
 
         return context
@@ -140,7 +141,7 @@ def perfumes_per_user_all(request, user_id):
 
     # user=User.objects.all().get(pk=user_id)
     # user_comments=user.perfumecomment_set.all()
-    context = {'user_perfume_objects':user_perfume_objects, }
+    context = {'user_perfume_objects':user_perfume_objects, 'user_id':user_id }
     return render(request, 'perfumes/perfumes-per-user-all.html',context)
 #####################
 

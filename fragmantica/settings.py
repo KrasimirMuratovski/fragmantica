@@ -98,12 +98,12 @@ WSGI_APPLICATION = 'fragmantica.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'fragmantica_pg_db',
+        'NAME': 'fragmantica_db_pg',
         'USER': 'postgres-user',
         'PASSWORD': 'password',
         'HOST': '127.0.0.1',
         'PORT': '5432',
-    }
+    },
 }
 
 # Password validation

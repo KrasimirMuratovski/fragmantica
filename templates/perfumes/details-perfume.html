@@ -124,9 +124,11 @@
                     <div class="card-body">
                         <h5 class="card-title">{{ perfume.name }}</h5>
                         <p class="card-text">
-                        <h4>{{ perfume.year_created }}</h4>
+                        <h4>{{ perfume.released }}</h4>
                         <h4>Designer:</h4>
                         <a href="{% url 'details designer' pk=perfume.designer_id %}">{{ perfume.designer.name }}</a>
+                        <h4>Perfume category:</h4>
+                        <h5>{{ perfume.perfume_category }}</h5>
 
                         {#                    Begin of the nested card 2 - perfume notes#}
                         <div class="card text-bg-light mb-3" style="max-width: 48rem;">

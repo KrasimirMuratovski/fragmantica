@@ -74,6 +74,9 @@
                     <div class="col-auto">
                         <a href="{% url 'logout user' %}">Log out</a>
                     </div>
+                    <div class="col-auto">
+                        <a href="{% url 'perfumes per user all' user_id=request.user.pk %}">Your perfumes</a>
+                    </div>
                 {% else %}
                     <div class="col-auto">
                         <a href="{% url 'login user' %}">Login</a>

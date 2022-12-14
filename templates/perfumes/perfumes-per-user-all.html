@@ -2,22 +2,55 @@
 {% include 'base/nav.html' %}
 
 {% block content %}
-<h1>This is user perfumes list </h1>
+    <div class="contaier">
+        <div class="card">
+            {#        <div class="col-sm-4 scroll>#}
+            <img class="card-img" src="{% static '/images/Fragmantica_main.jpg' %}" alt="Background image">
+            <div class="card-body card-img-overlay" style="color:darkred;">
+{#                <h3 class="card-title">User Perfumes: </h3>#}
 
-    {% if user_perfume_objects %}
-        <h2>User Perfumes: </h2>
-        {% for user_perfume in user_perfume_objects %}
-                <a href="{% url 'details perfume' pk=user_perfume.pk %}">{{ user_perfume.name }}</a>
-{#            {{ user_perfume.pk }}#}
-{#            {{ user_perfume.name }}#}
-{#            {{ user_perfume.designer }}#}
-{#            {{ user_perfume.year }}#}
-{#            {{ user_perfume.publication_date_and_time }}#}
-{#                <a href="{% url 'perfume comment view' comment_id=user_perfume.pk %}">Details:{{ user_comment.perfume.name }} </a>#}
-        {% endfor %}
-{% else %}
-        <h2>No user perfumes yet! </h2>
+                <div class="card" style="width: 54rem;">
+{#                    <img class="perfume-img" style="width: 400px;" src="{{ perfume.image }}" alt='perfume image'/>#}
+                    <div class="card-body">
+                        {% if user_perfume_objects %}
+                            <h2>User Perfumes: </h2>
+                            {% for user_perfume in user_perfume_objects %}
+                                <a href="{% url 'details perfume' pk=user_perfume.pk %}">{{ user_perfume.name }}</a>
+                            {% endfor %}
+                        {% else %}
+                            <h2>No user perfumes yet! </h2>
+                        {% endif %}
 
-    {% endif %}
-            <a class="edit-btn" href="javascript:history.back()">Go Back</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {#            End of the nested card 1#}
+        <h1><a class="btn btn-primary" href="javascript:history.back()">Go Back</a></h1>
+    </div>
+
+
+
+    {#    #}
+    {#    Old content#}
+    {#    <h1>This is user perfumes list </h1>#}
+    {##}
+    {#    {% if user_perfume_objects %}#}
+    {#        <h2>User Perfumes: </h2>#}
+    {#        {% for user_perfume in user_perfume_objects %}#}
+    {#            <a href="{% url 'details perfume' pk=user_perfume.pk %}">{{ user_perfume.name }}</a>#}
+    {#            {{ user_perfume.pk }}#}
+    {#            {{ user_perfume.name }}#}
+    {#            {{ user_perfume.designer }}#}
+    {#            {{ user_perfume.year }}#}
+    {#            {{ user_perfume.publication_date_and_time }}#}
+    {#                <a href="{% url 'perfume comment view' comment_id=user_perfume.pk %}">Details:{{ user_comment.perfume.name }} </a>#}
+    {#        {% endfor %}#}
+    {#    {% else %}#}
+    {#        <h2>No user perfumes yet! </h2>#}
+    {##}
+    {#    {% endif %}#}
+    {#    <a class="edit-btn" href="javascript:history.back()">Go Back</a>#}
+    {#   End of the Old content#}
+
 {% endblock %}

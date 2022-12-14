@@ -11,7 +11,7 @@
           <div class="card-body">
             <h5 class="card-title">{{ perfume.name }}</h5>
             <p class="card-text">
-                <h3>{{ perfume.year }}</h3>
+                <h3>{{ perfume.released }}</h3>
                 <h3>Designer:</h3>
               <a href="{% url 'details designer' pk=perfume.designer_id %}">{{ perfume.designer.name }}</a>
               </p>

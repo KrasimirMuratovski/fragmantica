@@ -13,7 +13,7 @@
         </library>
       </libraries>
     </data-source>
-    <data-source source="LOCAL" name="fragmantica_pg_db" uuid="c67b25a8-a175-4410-a335-b1cac4b09da3">
+    <data-source source="LOCAL" name="fragmantica_db_pg" uuid="7faf82d4-f06e-4868-b618-4abcdd4c6be2">
       <driver-ref>postgresql</driver-ref>
       <synchronize>true</synchronize>
       <jdbc-driver>org.postgresql.Driver</jdbc-driver>

@@ -45,3 +45,5 @@ def index(request):
 
 def about(request):
     return render(request, 'common/about_page.html')
+
+

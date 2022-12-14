@@ -14,6 +14,7 @@ from fragmantica.designers.models import Designer
 from fragmantica.notes.models import Note
 
 
+
 class ChoicesEnumMixin:
 	@classmethod
 	def choiceslist(cls):
@@ -32,21 +33,20 @@ class PerfumeCategory(ChoicesEnumMixin, Enum):
 
 
 class Perfume(StrFromFieldsMixin, models.Model):
-	str_fields = ('name','year', )
+	str_fields = ('name','released', )
 	PERFUME_NAME_MAX_LEN=96
 	PERFUME_NAME_MIN_LEN=2
 	PERFUME_YEAR_MIN=1960
-	PERFUME_YEAR_MAX=date.today().year
+	PERFUME_YEAR_MAX=date.today().year#TODO - add auto year
 
 	name=models.CharField(max_length=PERFUME_NAME_MAX_LEN, validators=(MinLengthValidator(PERFUME_NAME_MIN_LEN),), unique=True)
-	year_created=models.DateField()
+	released=models.IntegerField(validators=(MinValueValidator(PERFUME_YEAR_MIN),MaxValueValidator(PERFUME_YEAR_MAX),),)
 	image = models.URLField(null=False,blank=False,)
 	designer=models.ForeignKey(Designer, on_delete=models.RESTRICT,)
 	note=models.ManyToManyField(Note,)
 	award=models.OneToOneField(Award,on_delete=models.RESTRICT,null=True, blank=True,)
 	perfume_category = models.CharField(choices=PerfumeCategory.choiceslist(), max_length=PerfumeCategory.max_len())
 	slug = models.SlugField(unique=True, null=False, blank=True, )
-
 
 	def save(self, *args, **kwargs):
 		super().save(*args, **kwargs)
