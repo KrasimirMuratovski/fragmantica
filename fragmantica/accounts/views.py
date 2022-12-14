@@ -1,4 +1,4 @@
-from django.contrib.auth import get_user_model
+from django.contrib.auth import get_user_model, login
 from django.contrib.auth.views import LoginView, LogoutView
 from django.shortcuts import render
 
@@ -49,6 +49,10 @@ class SignUpView(CreateView):
 	success_url = reverse_lazy('index')
 	# success_url = reverse_lazy('login user')
 
+	def post(self, request, *args, **kwargs):
+		response = super().post(request, *args, **kwargs)
+		login(request, self.object)
+		return response
 
 class SignOutView(LogoutView):
 	next_page=reverse_lazy('index')

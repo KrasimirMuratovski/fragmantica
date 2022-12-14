@@ -11,6 +11,8 @@ https://docs.djangoproject.com/en/4.1/ref/settings/
 """
 
 from pathlib import Path
+
+import cloudinary
 from decouple import config
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 from django.urls import reverse_lazy
@@ -42,7 +44,9 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    #MyApps
+
+    'cloudinary',
+
     'fragmantica.accounts',
     'fragmantica.common',
     'fragmantica.perfumes',
@@ -153,6 +157,14 @@ STATICFILES_DIRS=(BASE_DIR / 'staticfiles',)
 
 MEDIA_URL='media/'
 MEDIA_ROOT=BASE_DIR/'mediafiles'
+
+
+cloudinary.config(
+    cloud_name="da3gohuzx",
+    api_key="815811933576927",
+    api_secret="Gvzv7FQ6EZaXlTgjw0rXPFW-j0M",
+    secure=True
+)
 
 # EMAIL_BACKEND = 'django_mailjet.backends.MailjetBackend'
 # # MAILJET_API_KEY = 'API-KEY'

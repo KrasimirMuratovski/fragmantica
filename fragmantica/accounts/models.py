@@ -8,7 +8,7 @@ from django.db import models
 # We will use get_user_model() to access this class
 from fragmantica.core.validators import validate_only_letters
 from fragmantica.perfumes.models import Perfume
-
+from cloudinary import models as cloudinary_models
 
 class ChoicesEnumMixin:
 	@classmethod
@@ -45,6 +45,7 @@ class FragUser(AbstractUser):
 	age=models.PositiveIntegerField(null=True, blank=True)
 	gender=models.CharField(choices=Gender.gender_choices(), max_length=Gender.max_len())
 	perfume=models.ManyToManyField(Perfume)
+	avatar= cloudinary_models.CloudinaryField(null=True,blank=True,)
 	# TODO:email verification
 	# is_verified = models.BooleanField(default=False,)
 

@@ -14,7 +14,7 @@ UserModel=get_user_model()
 def send_greeting_email(sender, instance, created, **kwargs):
     if created:
         subject = "Registration greetings from Fragmantica"
-        html_message = render_to_string('email-greeting.html', {'profile': instance})
+        html_message = render_to_string('email-greeting.html', {'user': instance})
         plain_message = strip_tags(html_message)
         to = instance.email
         send_mail(
