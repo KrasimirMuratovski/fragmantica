@@ -59,7 +59,8 @@
 
                         <div class="edit-delete">
                             <h2>Edit Profile</h2>
-                            <form method="post" action="{% url 'edit user' pk=object.pk %}">
+                            <form method="post" action="{% url 'edit user' pk=object.pk %}"
+                                  enctype="multipart/form-data">
                                 {% for field in form %}
                                     <p class="error"> {{ field.errors }} </p>
                                     <div class="label-input">

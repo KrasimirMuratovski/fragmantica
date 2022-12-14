@@ -3,32 +3,37 @@
 
 {% block content %}
 
-<div class="contaier">
-    <div class="card">
-        <img class="card-img" src="{% static '/images/Fragmantica_main.jpg' %}" alt="Background image">
-        <div class="card-body card-img-overlay" style="color: coral;">
-            <div class="card text-bg-light mb-3" style="max-width: 48rem;">
-                <div class="card-header">
-                    <h2>Perfumes currently in the database:</h2>
-                </div>
-                <div class="card-body">
-                    <div>
-                        <ul>
-                            {% for perfume in perfumes %}
-                                <li>
-                                    <h5> Category: {{ perfume.perfume_category }}<a href="{% url 'details perfume' pk=perfume.pk %}">{{ perfume.name }}</a> </h5>
-                                </li>
-                            {% endfor %}
-
-                        </ul>
+    <div class="contaier">
+        <div class="card">
+            <img class="card-img" src="{% static '/images/Fragmantica_main.jpg' %}" alt="Background image">
+            <div class="card-body card-img-overlay" style="color: coral;">
+                <div class="card text-bg-light mb-3" style="max-width: 48rem;">
+                    <div class="card-header">
+                        <h2>Perfumes currently in the database:</h2>
                     </div>
-                <h1><a class="btn btn-primary" href="javascript:history.back()">Go Back</a></h1>
+                    <div class="card-body">
+                        <div>
+                            {% for perfume in perfumes %}
+                                    <div>
+                                        <div id="wrapperDiv">
+                                            <div id="div1" style="padding:1px;background-color:#decddd;float:left">
+                                                <img src="{{ perfume.image }}" alt="Perfume image" width="20">
+                                            </div>
+                                            <div id="div2" style="padding:1px;background-color:#cedddd;float:left">
+                                                <a href="{% url 'details perfume' pk=perfume.pk %}">{{ perfume.name }}</a>
+                                                Category: {{ perfume.perfume_category }}
+                                            </div>
+                                        </div>
+                                    </div>
+                            {% endfor %}
+                        </div>
+                        <h1><a class="btn btn-primary" href="javascript:history.back()">Go Back</a></h1>
 
+                    </div>
                 </div>
             </div>
         </div>
     </div>
-</div>
 
 
 {% endblock %}

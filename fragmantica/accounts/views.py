@@ -61,7 +61,7 @@ class SignOutView(LogoutView):
 class UserEditView(UpdateView):
 	template_name='accounts/profile-edit-page.html'
 	model=UserModel
-	fields = ('username', 'first_name', 'last_name', 'gender', 'email')
+	fields = ('username', 'first_name', 'last_name', 'gender', 'email', 'avatar')
 	# success_url = reverse_lazy('details user' kwargs)
 
 	def get_success_url(self):
