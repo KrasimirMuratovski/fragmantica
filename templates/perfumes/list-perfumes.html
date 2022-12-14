@@ -16,7 +16,7 @@
                         <ul>
                             {% for perfume in perfumes %}
                                 <li>
-                                    <a href="{% url 'details perfume' pk=perfume.pk %}">{{ perfume.name }}</a>
+                                    <h5> Category: {{ perfume.perfume_category }}<a href="{% url 'details perfume' pk=perfume.pk %}">{{ perfume.name }}</a> </h5>
                                 </li>
                             {% endfor %}
 

@@ -48,6 +48,9 @@ class PerfumeListView(ListView):
     model = Perfume
 
 
+
+
+
 @login_required
 def comment_perfume(request, perfume_id):
     perfume = Perfume.objects.filter(pk=perfume_id).get()
