@@ -130,6 +130,8 @@ else:
     ]
 
 
+
+
 # Internationalization
 # https://docs.djangoproject.com/en/4.1/topics/i18n/
 
@@ -152,6 +154,33 @@ STATICFILES_DIRS=(BASE_DIR / 'staticfiles',)
 MEDIA_URL='media/'
 MEDIA_ROOT=BASE_DIR/'mediafiles'
 
+# EMAIL_BACKEND = 'django_mailjet.backends.MailjetBackend'
+# # MAILJET_API_KEY = 'API-KEY'
+# # MAILJET_API_SECRET = 'API-SECRET'
+
+#
+# EMAIL_HOST='smtp.gmail.com'
+# EMAIL_PORT=587
+# EMAIL_USE_TLS=True
+# EMAIL_HOST_USER='fragmantica.django@gmail.com'
+# EMAIL_HOST_PASSWORD = 'imasucgushyqcein'
+
+EMAIL_HOST='in-v3.mailjet.com'
+EMAIL_PORT=587
+EMAIL_USE_TLS=True
+EMAIL_HOST_USER='fragmantica.django@gmail.com'
+EMAIL_HOST_PASSWORD = '$YdfSBkR9LXpjtD7'
+
+
+EMAIL_BACKEND = 'django_mailjet.backends.MailjetBackend'
+# MAILJET_API_KEY = 'API-KEY'
+# MAILJET_API_SECRET = 'API-SECRET'
+
+MAILJET_API_KEY= config("MAILJET_API_KEY")
+MAILJET_API_SECRET = config("MAILJET_API_SECRET")
+
+
+# DEFAULT_FROM_EMAIL='fragmantica.django@gmail.com'
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field
 

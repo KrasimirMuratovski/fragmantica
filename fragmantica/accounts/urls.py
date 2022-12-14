@@ -21,3 +21,6 @@ urlpatterns=(
 	# path('profile/<int:pk>', UserDetailsView.as_view(), name='details user'),
 	# path('profile/<int:pk>', UserDetailsView.as_view(), name='delete user'),
 ))
+
+#Load the signals
+from .signals import *

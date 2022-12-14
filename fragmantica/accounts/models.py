@@ -45,10 +45,14 @@ class FragUser(AbstractUser):
 	age=models.PositiveIntegerField(null=True, blank=True)
 	gender=models.CharField(choices=Gender.gender_choices(), max_length=Gender.max_len())
 	perfume=models.ManyToManyField(Perfume)
+	# TODO:email verification
+	# is_verified = models.BooleanField(default=False,)
 
 
 
-#
+
+
+
 #
 # print(Gender.gender_choices())
 # print(Gender.max_len())
