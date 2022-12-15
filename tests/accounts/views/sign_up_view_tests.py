@@ -15,5 +15,4 @@ class SignUpViewTests(TestCase):
             reverse('register user'),
             data=self.VALID_USER_DATA,
         )
-
         self.assertEqual(self.VALID_USER_DATA['username'], response.context['user'].username)
