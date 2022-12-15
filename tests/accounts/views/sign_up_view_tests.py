@@ -5,7 +5,7 @@ from django.urls import reverse
 class SignUpViewTests(TestCase):
     VALID_USER_DATA = {
         'username': 'test_user',
-        'email': 'test_user@petstagram.com',
+        'email': 'test_user@fragmantica.com',
         'password1': 'password',
         'password2': 'password',
     }
@@ -15,4 +15,5 @@ class SignUpViewTests(TestCase):
             reverse('register user'),
             data=self.VALID_USER_DATA,
         )
+
         self.assertEqual(self.VALID_USER_DATA['username'], response.context['user'].username)

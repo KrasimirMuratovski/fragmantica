@@ -48,6 +48,8 @@ class Perfume(StrFromFieldsMixin, models.Model):
 	perfume_category = models.CharField(choices=PerfumeCategory.choiceslist(), max_length=PerfumeCategory.max_len())
 	slug = models.SlugField(unique=True, null=False, blank=True, )
 
+
+
 	def save(self, *args, **kwargs):
 		super().save(*args, **kwargs)
 

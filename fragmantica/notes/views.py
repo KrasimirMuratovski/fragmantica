@@ -36,3 +36,9 @@ class NoteListView(ListView):
 	context_object_name = 'notes'
 	template_name = 'notes/list-notes.html'
 	model = Note
+
+	def get_context_data(self, **kwargs):
+		context = super().get_context_data(**kwargs)
+		context['notes_count'] = self.object_list.count()
+
+		return context

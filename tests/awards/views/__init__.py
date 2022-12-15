@@ -1,0 +1,1 @@
+from .awards_list_view_test import *

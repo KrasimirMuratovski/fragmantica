@@ -9,7 +9,7 @@ https://docs.djangoproject.com/en/4.1/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/4.1/ref/settings/
 """
-
+import os
 from pathlib import Path
 
 import cloudinary
@@ -24,7 +24,12 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/4.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
+
+
 SECRET_KEY = config("SECRET_KEY")
+# SECRET_KEY = os.environ.get('SECRET_KEY')
+
+
 
 
 # SECURITY WARNING: don't run with debug turned on in production!
@@ -90,25 +95,25 @@ WSGI_APPLICATION = 'fragmantica.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/4.1/ref/settings/#databases
 
-#TODO/ADD Postgres
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.sqlite3',
-#         'NAME': BASE_DIR / 'db.sqlite3',
-#     }
-# }
-
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'fragmantica_db_pg',
-        'USER': 'postgres-user',
-        'PASSWORD': 'password',
-        'HOST': '127.0.0.1',
-        'PORT': '5432',
-    },
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': BASE_DIR / 'db.sqlite3',
+    }
 }
+
+
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.postgresql',
+#         'NAME': 'fragmantica_db_pg',
+#         'USER': 'postgres-user',
+#         'PASSWORD': 'password',
+#         'HOST': '127.0.0.1',
+#         'PORT': '5432',
+#     },
+# }
 
 # Password validation
 # https://docs.djangoproject.com/en/4.1/ref/settings/#auth-password-validators
@@ -185,11 +190,13 @@ EMAIL_HOST_PASSWORD = '$YdfSBkR9LXpjtD7'
 
 
 EMAIL_BACKEND = 'django_mailjet.backends.MailjetBackend'
-# MAILJET_API_KEY = 'API-KEY'
-# MAILJET_API_SECRET = 'API-SECRET'
+
 
 MAILJET_API_KEY= config("MAILJET_API_KEY")
 MAILJET_API_SECRET = config("MAILJET_API_SECRET")
+#
+# MAILJET_API_KEY= os.environ.get("MAILJET_API_KEY")
+# MAILJET_API_SECRET = os.environ.get("MAILJET_API_SECRET")
 
 
 # DEFAULT_FROM_EMAIL='fragmantica.django@gmail.com'
