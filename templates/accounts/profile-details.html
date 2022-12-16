@@ -2,72 +2,33 @@
 {% include 'base/nav.html' %}
 
 {% block content %}
-    {##}
-    {#    Old content#}
-    {#    <h1>Username: {{ object.username }}</h1>#}
-    {##}
-    {#    <h1>Email: {{ object.email }}</h1>#}
-    {##}
-    {#    <h1>First name: {{ object.first_name }}</h1>#}
-    {##}
-    {#    <h1>Last name: {{ object.last_name }}</h1>#}
-    {##}
-    {#    {% if object.age %}#}
-    {#        <h1>Age: {{ object.age }}</h1>#}
-    {#    {% endif %}#}
-    {##}
-    {#    {% if object.gender %}#}
-    {#        <h1>Gender: {{ object.gender }}</h1>#}
-    {#    {% endif %}#}
-    {##}
-    {#    {% if is_owner %}#}
-    {#        <a href="{% url 'edit user' pk=request.user.pk %}"> Edit profile</a>#}
-    {#        <a href="{% url 'delete user' pk=request.user.pk %}"> Delete profile</a>#}
-    {#    {% endif %}#}
-    {##}
-    {##}
-    {#    <h2>User Perfumes: </h2>#}
-    {##}
-    {#List of perfumes per user#}
-    {#    <a href="{% url 'perfumes per user all' user_id=user_pk %}">List of your perfumes: </a>#}
-    {#End of List of perfumes per user##}
-    {##}
-    {#    <h2>User comments: </h2>#}
-    {##}
-    {#List of comments per user#}
-    {#    <a href="{% url 'perfume comments per user all' user_id=user_pk %}">List of your comments: </a>#}
-    {#End of List of comments per user##}
-    {#    Old content end#}
-    {#    #}
-
     <div class="contaier">
         <div class="card">
-            <img class="card-img" src="{% static '/images/Fragmantica_main.jpg' %}" alt="Background image">
             <div class="card-body card-img-overlay" style="color: coral;">
                 <div class="card text-bg-light mb-3" style="max-width: 60rem;">
-                    <div class="card-header"><h1>Your profile details:</h1></div>
+                    <div class="card-header"><h3>Your profile details:</h3></div>
                     <div class="card-body">
                         <div>
                             <img src="{{ object.avatar.url }}" alt="user avatar">
-                            <h2>Username: {{ object.username }}</h2>
+                            <h4>Username: {{ object.username }}</h4>
 
-                            <h2>Email: {{ object.email }}</h2>
+                            <h4>Email: {{ object.email }}</h4>
 
-                            <h2>First name: {{ object.first_name }}</h2>
+                            <h4>First name: {{ object.first_name }}</h4>
 
-                            <h2>Last name: {{ object.last_name }}</h2>
+                            <h4>Last name: {{ object.last_name }}</h4>
 
                             {% if object.age %}
-                                <h1>Age: {{ object.age }}</h1>
+                                <h4>Age: {{ object.age }}</h4>
                             {% endif %}
 
                             {% if object.gender %}
-                                <h2>Gender: {{ object.gender }}</h2>
+                                <h4>Gender: {{ object.gender }}</h4>
                             {% endif %}
 
                             {% if is_owner %}
                                  <a class="btn btn-outline-primary" href="{% url 'edit user' pk=request.user.pk %}">Edit profile</a>
-                                <a class="btn btn-warning" href="{% url 'edit user' pk=request.user.pk %}">Delete profile</a>
+                                <a class="btn btn-warning" href="{% url 'delete user' pk=request.user.pk %}">Delete profile</a>
 
 
 {#                                <a href="{% url 'edit user' pk=request.user.pk %}"> Edit profile</a>#}
@@ -75,14 +36,14 @@
                             {% endif %}
 
 
-{#                            <h2>User Perfumes: </h2>#}
+{#                            <h4>User Perfumes: </h4>#}
 
                             {#List of perfumes per user#}
                         <a class="btn btn-outline-secondary" href="{% url 'perfumes per user all' user_id=user_pk %}">List of your perfumes</a>
 {#                            <a href="{% url 'perfumes per user all' user_id=user_pk %}">List of your perfumes: </a>#}
                             {#End of List of perfumes per user##}
 
-{#                            <h2>User comments: </h2>#}
+{#                            <h4>User comments: </h4>#}
 
                             {#List of comments per user#}
                         <a class="btn btn-outline-warning" href="{% url 'perfume comments per user all' user_id=user_pk %}">List of your

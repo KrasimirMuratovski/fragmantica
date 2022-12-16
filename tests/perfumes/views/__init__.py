@@ -1,0 +1,1 @@
+from .perfume_details_view_tests import *

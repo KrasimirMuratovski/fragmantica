@@ -12,14 +12,10 @@ urlpatterns=(
 		[
 			path('', UserDetailsView.as_view(), name='details user'),
 			path('edit/', UserEditView.as_view(), name='edit user'),
-			# path('edit/', UserEditView.as_view(), name='edit user'),
 			path('delete/', UserDeleteView.as_view(), name='delete user'),
-
 		 ]
 	),
-	#
-	# path('profile/<int:pk>', UserDetailsView.as_view(), name='details user'),
-	# path('profile/<int:pk>', UserDetailsView.as_view(), name='delete user'),
+
 ))
 
 #Load the signals

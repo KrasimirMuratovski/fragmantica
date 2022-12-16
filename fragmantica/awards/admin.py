@@ -6,5 +6,7 @@ from fragmantica.awards.models import Award
 
 
 @admin.register(Award)
-class DesignerAdmin(admin.ModelAdmin):
-	pass
+class AwardAdmin(admin.ModelAdmin):
+	list_display = ('name',)
+	list_filter = ('name',)
+	search_fields = ('name',)

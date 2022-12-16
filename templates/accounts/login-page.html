@@ -1,16 +1,13 @@
 {% load static %}
 {% include 'base/nav.html' %}
-
 {% block content %}
-
     <div class="contaier">
         <div class="card">
-            <img class="card-img" src="{% static '/images/Fragmantica_main.jpg' %}" alt="Background image">
             <div class="card-body card-img-overlay" style="color: coral;">
-                <div class="card text-bg-light mb-3" style="max-width: 40rem;">
-                    <div class="card-header"> <h1>Login page:</h1></div>
+                <div class="card text-bg-light mb-3" style="max-width: 60rem;">
+                    <div class="card-header"> <h3>Login page:</h3></div>
                     <div class="card-body">
-                        <div>
+                        <h4>
                             <form action="{% url 'login user' %}" method="post">
                                 {{ form }}
                                 <button class="btn btn-secondary">Yes</button>
@@ -18,15 +15,13 @@
                                 <input type="hidden" name="next" value="{{ next }}">
                                 {% csrf_token %}
                             </form>
-                        </div>
+                        </h4>
                         <h1><a class="btn btn-primary" href="javascript:history.back()">Go Back</a></h1>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-
-
 
 
 {% endblock %}

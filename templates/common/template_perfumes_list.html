@@ -1,28 +1,28 @@
 {% load static %}
+{% include 'base/nav.html' %}
+{% block content %}
 
-<div class="contaier">
-    <div class="card">
-        <img class="card-img" src="{% static '/images/Fragmantica_main.jpg' %}" alt="Background image">
-        <div class="card-body card-img-overlay" style="color: coral;">
-            <div class="card text-bg-light mb-3" style="max-width: 48rem;">
-                <div class="card-header">
-                    <h2>Perfume Notes:</h2>
-                </div>
-                <div class="card-body">
-                    <div>
-                        <ul>
-                            {% for perfume in perfumes %}
-                                <li>
-                                    <a href="{% url 'details perfume' pk=perfume.pk %}">{{ perfume.name }}</a>
-                                </li>
-                            {% endfor %}
-
-                        </ul>
+    <div class="contaier">
+        <div class="card">
+            <img class="card-img" src="{% static '/images/Fragmantica_main.jpg' %}" alt="Background image">
+            <div class="card-body card-img-overlay" style="color: coral;">
+                <div class="card text-bg-light mb-3" style="max-width: 48rem;">
+                    <div class="card-header">
+                        <h2>Edit Comment:</h2>
                     </div>
-                <h1><a class="btn btn-primary" href="javascript:history.back()">Go Back</a></h1>
+                    <div class="card-body">
+                        <div>
+                            <form action="{% url 'perfume comment edit' comment_id=comment_id %}" method="post">
+                                {{ form.as_p }}
+                                <button class="edit-btn" type="submit">Edit</button>
+                                {% csrf_token %}
+                            </form>
+                        </div>
+                        <h1><a class="btn btn-primary" href="javascript:history.back()">Go Back</a></h1>
 
+                    </div>
                 </div>
             </div>
         </div>
     </div>
-</div>
+{% endblock %}

@@ -23,17 +23,18 @@
     {#    End of the  Old content#}
     <div class="contaier">
         <div class="card">
-            <img class="card-img" src="{% static '/images/Fragmantica_main.jpg' %}" alt="Background image">
             <div class="card-body card-img-overlay" style="color: coral;">
                 <div class="card text-bg-light mb-3" style="max-width: 60rem;">
-                    <div class="card-header"><h1>Perfume designers in the database:</h1></div>
+                    <div class="card-header"><h3>Perfume designers in the database:</h3></div>
                     <div class="card-body">
                         <div class="info-section">
                             <div>
                                 <ul>
                                     {% for designer in designers %}
-                                        <li>{{ designer.name }}
-                                            <a href="{% url 'details designer' pk=designer.pk %}">{{ designer.name }}</a>
+                                        <li>
+                                            <h4>
+                                                <a href="{% url 'details designer' pk=designer.pk %}">{{ designer.name }}</a>
+                                            </h4>
                                         </li>
                                     {% endfor %}
                                 </ul>
@@ -44,5 +45,6 @@
                 </div>
             </div>
         </div>
+    </div>
 
 {% endblock %}

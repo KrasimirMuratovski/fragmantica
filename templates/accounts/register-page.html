@@ -3,53 +3,18 @@
 {% include 'base/nav.html' %}
 
 {% block content %}
-
-
-    {#Old content#}
-    {##}
-    {#    <div>#}
-    {#    <h1>Register_page Krasimir</h1>#}
-    {#    <form action="{% url 'register user' %}" method="post">#}
-    {#        {{ form.username|placeholder:'Username:' }}#}
-    {#        {{ form.email|placeholder:'Email:' }}#}
-    {#        {{ form.password1|placeholder:'Password:' }}#}
-    {#        {{ form.password2|placeholder:'Repeat password:' }}#}
-    {#        {{ form.password2 }}#}
-    {#        {{ form.as_p }}#}
-    {#        <button type="submit">Register</button>#}
-    {#        <input type="hidden" name="next" value="{{ next }}">#}
-    {#        {% csrf_token %}#}
-    {#    </form>#}
-    {##}
-    {#    <h1>#}
-    {#        <p>#}
-    {#            Already registered? <a href="{% url 'login user' %}">Log in</a>#}
-    {#        </p>#}
-    {#    </h1>#}
-    {##}
-    {#</div>#}
-    {##}
-    {##}
-    {#            <a class="edit-btn" href="javascript:history.back()">Go Back</a>#}
-    {#    #}
-    {#End of the Old content#}
     <div class="contaier">
         <div class="card">
             <img class="card-img" src="{% static '/images/Fragmantica_main.jpg' %}" alt="Background image">
             <div class="card-body card-img-overlay" style="color: coral;">
                 <div class="card text-bg-light mb-3" style="max-width: 240rem;">
-                    <div class="card-header"><h1>Registration page:</h1></div>
+                    <div class="card-header"><h3>Registration page:</h3></div>
                     <div class="card-body">
-
-
-                        <h1>Register_page Krasimir</h1>
                         <form action="{% url 'register user' %}" method="post">
                             {{ form.username|placeholder:'Username:' }}
                             {{ form.email|placeholder:'Email:' }}
                             {{ form.password1|placeholder:'Password:' }}
                             {{ form.password2|placeholder:'Repeat password:' }}
-                            {#        {{ form.password2 }}#}
-                            {#        {{ form.as_p }}#}
                             <button type="submit">Register</button>
                             <input type="hidden" name="next" value="{{ next }}">
                             {% csrf_token %}
@@ -67,9 +32,4 @@
             </div>
         </div>
     </div>
-
-
-
-
-
 {% endblock %}

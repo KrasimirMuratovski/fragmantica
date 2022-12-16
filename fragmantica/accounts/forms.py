@@ -19,3 +19,11 @@ class UserCreateForm(UserCreationForm):
 		fields = ("username","email")
 		field_classes = {"username": UsernameField}
 
+
+#
+# class UserDeleteForm(UserChangeForm):
+#
+# 	class Meta:
+# 		model = UserModel
+# 		fields = "__all__"
+# 		field_classes = {"username": UsernameField}

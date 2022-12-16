@@ -21,7 +21,7 @@ class Category(ChoicesEnumMixin, Enum):
 class Note(StrFromFieldsMixin, models.Model):
 	str_fields = ('name',)
 	MIN_LEN_NAME=2
-	MAX_LEN_NAME=64
+	MAX_LEN_NAME=96
 
 	name=models.CharField(max_length=MAX_LEN_NAME, validators=(MinLengthValidator(MIN_LEN_NAME),),unique=True)
 	image = models.URLField(null=False, blank=False, )

@@ -1,10 +1,8 @@
 {% load static %}
 {% include 'base/nav.html' %}
 {% block content %}
-
     <div class="contaier">
         <div class="card">
-            <img class="card-img" src="{% static '/images/Fragmantica_main.jpg' %}" alt="Background image">
             <div class="card-body card-img-overlay" style="color: coral;">
                 <div class="card text-bg-light mb-3" style="max-width: 48rem;">
                     <div class="card-header">
@@ -21,28 +19,10 @@
 
                             </ul>
                         </div>
-                    <h1><a class="btn btn-primary" href="javascript:history.back()">Go Back</a></h1>
-
+                        <h1><a class="btn btn-primary" href="javascript:history.back()">Go Back</a></h1>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-
-
-    {##}
-    {##}
-    {#    <div>#}
-    {#        <ul>#}
-    {#            {% for note in notes %}#}
-    {#                <li>{{ note.name }}#}
-    {##}
-    {#                    <a href="{% url 'details note' pk=note.pk %}">{{ note.name }}</a>#}
-    {#                </li>#}
-    {#            {% endfor %}#}
-    {##}
-    {#        </ul>#}
-    {#    </div>#}
-
-{#    <a class="edit-btn" href="javascript:history.back()">Go Back</a>#}
 {% endblock %}

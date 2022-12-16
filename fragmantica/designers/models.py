@@ -13,7 +13,7 @@ class Designer(StrFromFieldsMixin, models.Model):
 	str_fields = ('name',)
 	MIN_LEN_NAME=2
 	MAX_LEN_NAME=64
-	DESIGNER_YEAR_MIN=1800
+	DESIGNER_YEAR_MIN=1770
 	DESIGNER_YEAR_MAX=date.today().year
 
 	name=models.CharField(max_length=MAX_LEN_NAME, validators=(MinLengthValidator(MIN_LEN_NAME),),unique=True)

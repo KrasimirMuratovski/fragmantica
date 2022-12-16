@@ -1,17 +1,15 @@
 {% load static %}
 {% include 'base/nav.html' %}
-
 {% block content %}
     <div class="contaier">
         <div class="card">
-            <img class="card-img" src="{% static '/images/Fragmantica_main.jpg' %}" alt="Background image">
             <div class="card-body card-img-overlay" style="color: coral;">
                 <div class="card text-bg-light mb-3" style="max-width: 60rem;">
-                    <div class="card-header"><h1>Award details:</h1></div>
+                    <div class="card-header"><h3>Award details:</h3></div>
                     <div class="card-body">
                         <div class="info-section">
-                            <h2>Name of the award: <h4>{{ award.name }}</h4></h2>
-                            <h2>Perfume with this award:</h2>
+                            <h4>Name of the award: <h5>{{ award.name }}</h5></h4>
+                            <h4>Perfume with this award:</h4>
                             {% if awards_perfume %}
                                 <a href="{% url 'details perfume' pk=awards_perfume.id %}">{{ awards_perfume.name }}</a>
                             {% else %}

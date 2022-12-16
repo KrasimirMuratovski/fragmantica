@@ -1,47 +1,22 @@
 {% load static %}
 {% include 'base/nav.html' %}
-
 {% block content %}
-
-
-    {#Old content#}
-    {#    #}
-    {#    <h1>KM Designer Details page</h1>#}
-    {##}
-    {##}
-    {#    <section id="designer-details">#}
-    {#        <h1>Designer Details</h1>#}
-    {#        <div class="info-section">#}
-    {#            <div class="designer-header">#}
-    {#                <img class="car-img"#}
-    {#                     src="{{ object.photo }}"#}
-    {#                     alt='designer image'/>#}
-    {#                <h1>{{ object.name }}</h1>#}
-    {#                <h1>{{ object.since }}</h1>#}
-    {#                <h1>{{ object.description }}</h1>#}
-    {##}
-    {#            </div>#}
-    {#            <a class="edit-btn" href="javascript:history.back()">Go Back</a>#}
-    {#End of the Old content#}
     <div class="contaier">
         <div class="card">
-            <img class="card-img" src="{% static '/images/Fragmantica_main.jpg' %}" alt="Background image">
             <div class="card-body card-img-overlay" style="color: coral;">
-                <div class="card text-bg-light mb-3" style="max-width: 60rem;">
+                <div class="card text-bg-light" style="max-width: 20rem;">
                     <div class="card-header"><h1>Designer Details:</h1></div>
                     <div class="card-body">
-                           <div class="info-section">
-                            <div class="designer-header">
-                                <img class="designer-img" src="{{ object.photo }}" alt='designer image'/>
-                                <h2>{{ object.name }}</h2>
-                                <h2>{{ object.since }}</h2>
-                                <h2>{{ object.description }}</h2>
-                                <h1><a class="btn btn-primary" href="javascript:history.back()">Go Back</a></h1>
-                            </div>
-                        </div>
+                        <img class="designer-img" src="{{ object.photo }}" alt='designer image'/>
+                        <h2>{{ object.name }}</h2>
+                        <h2>{{ object.since }}</h2>
+                        <h2>{{ object.description }}</h2>
+                        <h1><a class="btn btn-primary" href="javascript:history.back()">Go Back</a></h1>
                     </div>
                 </div>
             </div>
-
+        </div>
+    </div>
+    </div>
 
 {% endblock %}

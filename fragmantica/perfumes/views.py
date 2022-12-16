@@ -61,7 +61,7 @@ def comment_perfume(request, perfume_id):
         comment.perfume = perfume#Attach the related perfume
         comment.user = request.user#Attach the related user
         comment.save()
-    return redirect('index')
+    return redirect('details perfume', perfume_id)
 
 
 
@@ -86,7 +86,7 @@ def possession_perfume(request, perfume_id):
 @login_required
 def perfume_comment_edit(request, comment_id):
     comment=PerfumeComment.objects.get(pk=comment_id)
-    # perfume_id=comment.perfume.pk
+    perfume_id=comment.perfume_id
     if request.method == 'GET':
         form = PerfumeCommentEditForm(instance=comment)
     else:
@@ -94,7 +94,8 @@ def perfume_comment_edit(request, comment_id):
         if form.is_valid():
             form.save()
             # return redirect('details perfume', pk=perfume_id)
-            return redirect('index')
+            # return redirect('index')
+            return redirect('details perfume', perfume_id)
 
     context = {'form': form, 'comment':comment, 'comment_id':comment_id}
     return render(request, 'perfumes/perfume-comment-edit.html', context)
@@ -153,15 +154,15 @@ def perfumes_per_user_all(request, user_id):
 @login_required
 def perfume_comment_delete(request, comment_id):
     comment=PerfumeComment.objects.get(pk=comment_id)
-    # perfume_id=comment.perfume.pk
+    perfume_id=comment.perfume_id
     if request.method == 'GET':
         form = PerfumeCommentDeleteForm(instance=comment)
     else:
         form = PerfumeCommentDeleteForm(request.POST, instance=comment)
         if form.is_valid():
             form.save()
-            # return redirect('details perfume', pk=perfume_id)
-            return redirect('index')
+            return redirect('details perfume', perfume_id)
+            # return redirect('index')
 
     context = {'form': form, 'comment':comment, 'comment_id':comment_id}
     return render(request, 'perfumes/perfume-comment-delete.html', context)
