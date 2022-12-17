@@ -4,13 +4,13 @@
     <div class="contaier">
         <div class="card">
             <div class="card-body card-img-overlay" style="color: coral;">
-                <div class="card text-bg-light" style="max-width: 20rem;">
+                <div class="card text-bg-light" style="max-width: 100rem;">
                     <div class="card-header"><h1>Designer Details:</h1></div>
                     <div class="card-body">
-                        <img class="designer-img" src="{{ object.photo }}" alt='designer image'/>
+                        <img class="designer-img" src="{{ object.photo }}" alt='designer image' style="width: 200px" />
                         <h2>{{ object.name }}</h2>
-                        <h2>{{ object.since }}</h2>
-                        <h2>{{ object.description }}</h2>
+                        <h2>Since:{{ object.since }}</h2>
+                        <h4>{{ object.description }}</h4>
                         <h1><a class="btn btn-primary" href="javascript:history.back()">Go Back</a></h1>
                     </div>
                 </div>
