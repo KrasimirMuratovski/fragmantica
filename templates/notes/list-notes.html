@@ -13,7 +13,7 @@
                             <ul>
                                 {% for note in notes %}
                                     <li>
-                                        <a href="{% url 'details note' pk=note.pk %}">{{ note.name }}</a>
+                                        <h4><a href="{% url 'details note' pk=note.pk %}">{{ note.name }}</a></h4>
                                     </li>
                                 {% endfor %}
 

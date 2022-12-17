@@ -1,33 +1,131 @@
 {% load static %}
 {% include 'base/nav.html' %}
+
 {% block content %}
     <div class="contaier">
         <div class="card">
             <div class="card-body card-img-overlay" style="color: coral;">
-                <div class="card text-bg-light mb-3" style="max-width: 48rem;">
-                    <div class="card-header">
-                        <h2>Perfumes currently in the database:</h2>
-                    </div>
+                <div class="card text-bg-light" style="max-width: 160rem;">
+                    <div class="card-header"><h3>Perfume Details:</h3></div>
                     <div class="card-body">
-                        <div>
-                            {% for perfume in perfumes %}
-                                    <div>
-                                        <div id="wrapperDiv">
-                                            <div id="div1" style="padding:1px;background-color:#decddd;float:left">
-                                                <img src="{{ perfume.image }}" alt="Perfume image" width="20">
-                                            </div>
-                                            <div id="div2" style="padding:1px;background-color:#cedddd;float:left">
-                                                <a href="{% url 'details perfume' pk=perfume.pk %}">{{ perfume.name }}</a>
-                                                Category: {{ perfume.perfume_category }}
+
+                        <div class="container-fluid">
+                            <div class="row">
+
+                                {#                            Column 1#}
+                                <div class="col">
+                                    <div class="card">
+                                        <div class="card-body">
+                                            <h4 class="card-title">Unisex perfumes:</h4>
+                                            <div>
+                                                {% for perfume in unisex %}
+                                                    <ul>
+                                                        <li>
+                                                            <h5>
+                                                                <div>
+                                                                    <div id="wrapperDiv">
+                                                                        <div id="div1"
+                                                                             style="padding:1px;background-color:#decddd;float:left">
+                                                                            <img src="{{ perfume.image }}"
+                                                                                 alt="Perfume image"
+                                                                                 width="20">
+                                                                        </div>
+                                                                        <div id="div2"
+                                                                             style="padding:1px;background-color:#cedddd;float:left">
+                                                                            <a href="{% url 'details perfume' pk=perfume.pk %}">{{ perfume.name }}</a>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </h5>
+                                                        </li>
+                                                    </ul>
+                                                {% empty %}
+                                                    <h4>There are no perfumes in this category</h4>
+                                                {% endfor %}
                                             </div>
                                         </div>
                                     </div>
-                            {% endfor %}
+                                </div>
+
+                                {#                            Column 2#}
+                                <div class="col">
+                                    <div class="card">
+                                        <div class="card-body">
+                                            <h4 class="card-title">Female perfumes:</h4>
+                                            <div>
+                                                {% for perfume in female %}
+                                                    <ul>
+                                                        <li>
+                                                            <h5>
+                                                                <div>
+                                                                    <div id="wrapperDiv">
+                                                                        <div id="div1"
+                                                                             style="padding:1px;background-color:#decddd;float:left">
+                                                                            <img src="{{ perfume.image }}"
+                                                                                 alt="Perfume image"
+                                                                                 width="20">
+                                                                        </div>
+                                                                        <div id="div2"
+                                                                             style="padding:1px;background-color:#cedddd;float:left">
+                                                                            <a href="{% url 'details perfume' pk=perfume.pk %}">{{ perfume.name }}</a>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </h5>
+                                                        </li>
+                                                    </ul>
+                                                {% empty %}
+                                                    <h4>There are no perfumes in this category</h4>
+                                                {% endfor %}
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                {#                            Column 3#}
+                                <div class="col">
+                                    <div class="card">
+                                        <div class="card-body">
+
+                                            <h4 class="card-title">Male perfumes:</h4>
+                                            <div>
+                                                {% for perfume in male %}
+                                                    <div>
+                                                        <ul>
+                                                            <li>
+                                                                <h5>
+                                                                    <div id="wrapperDiv">
+                                                                        <div id="div1"
+                                                                             style="padding:1px;background-color:#decddd;float:left">
+                                                                            <img src="{{ perfume.image }}"
+                                                                                 alt="Perfume image"
+                                                                                 width="20">
+                                                                        </div>
+                                                                        <div id="div2"
+                                                                             style="padding:1px;background-color:#cedddd;float:left">
+                                                                            <a href="{% url 'details perfume' pk=perfume.pk %}">{{ perfume.name }}</a>
+                                                                        </div>
+                                                                    </div>
+                                                                </h5>
+                                                            </li>
+                                                        </ul>
+                                                    </div>
+                                                {% empty %}
+                                                    <h4>There are no perfumes in this category</h4>
+                                                {% endfor %}
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
                         </div>
-                        <h1><a class="btn btn-primary" href="javascript:history.back()">Go Back</a></h1>
 
                     </div>
+                    {#            End of the nested card 1#}
+                    <h1><a class="btn btn-primary" href="javascript:history.back()">Go Back</a></h1>
                 </div>
+
             </div>
         </div>
     </div>

@@ -1,32 +1,34 @@
-<div class="card" style="width: 18rem;">
-    <img class="card-img" src="{% static '/images/Fragmantica_main.jpg' %}" alt="Background image">
-    <div class="card-body">
-        <h5 class="card-title">Your comments:</h5>
-        {#    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>#}
-
-        {#        Begin of the nested card 1#}
-        <div class="card" style="width: 36rem;">
-            <div class="card-body">
-                <h5 class="card-title">{{ perfume.name }}</h5>
+<div class="card text-bg-light mb-3">
+    <div class="card-body" style="height: 500px; overflow-y: auto">
+        <h4 class="card-title">User comments:</h4>
+        <div>
+            {% if user_comments %}
                 <p class="card-text">
-                    {% if user_comments %}
-                        <h2>User comments: </h2>
-                        {% for user_comment in user_comments %}
-                            {#            {{ user_comment.pk }}#}
-                            {{ user_comment.text }}
-                            {{ user_comment.publication_date_and_time }}
-                            <a href="{% url 'perfume comment view' comment_id=user_comment.pk %}">Details:{{ user_comment.perfume.name }} </a>
-                        {% endfor %}
-                    {% else %}
-                        <h2>No user comments yet! </h2>
-
-                    {% endif %}
-                </p>
-
-            </div>
+                    {% for user_comment in user_comments %}
+                        <div class="card">
+                            <div class="text">
+                                <ul>
+                                    <h5>{{ user_comment.text }}</h5>
+                                    {#                                                            <h4>{{ perfume_comment.user }}</h4>#}
+                                    <h5>{{ user_comment.publication_date_and_time }}</h5>
+                                    <h5>
+                                        <a href="{% url 'perfume comment view' comment_id=user_comment.pk %}">Details:{{ user_comment.perfume.name }} </a>
+                                    </h5>
+                                    {#                                                            <h4>{{ perfume_comment.id }}</h4>#}
+                                    {#                                    {% if perfume_comment.user == request_user %}#}
+                                    {#                                        <h5>#}
+                                    {#                                            <a href="{% url 'perfume comment edit' comment_id=perfume_comment.id %}">Edit#}
+                                    {#                                                comment</a>#}
+                                    {#                                            <a href="{% url 'perfume comment delete' comment_id=perfume_comment.id %}">Delete#}
+                                    {#                                                comment</a></h5>#}
+                                    {#                                    {% endif %}#}
+                                </ul>
+                            </div>
+                        </div>
+                    {% endfor %}
+            {% else %}
+                <h4>No user comments yet!</h4>
+            {% endif %}
         </div>
-        {#End of the nested card 1#}
-
-        <a href="#" class="btn btn-primary">Go somewhere</a>
     </div>
 </div>

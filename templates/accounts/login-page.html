@@ -10,7 +10,7 @@
                         <h4>
                             <form action="{% url 'login user' %}" method="post">
                                 {{ form }}
-                                <button class="btn btn-secondary">Yes</button>
+                                <button class="btn btn-secondary">Login</button>
 {#                                <button type="submit">Log in</button>#}
                                 <input type="hidden" name="next" value="{{ next }}">
                                 {% csrf_token %}

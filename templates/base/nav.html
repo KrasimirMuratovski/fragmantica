@@ -42,43 +42,43 @@
             <div class="card text-bg-light mb-3" style="max-width: 128rem;">
                 <div class="row" >
                     <div class="col-auto">
-                        <h1><a href="{% url 'index' %}">Fragmantica Home</a></h1>
+                        <h2><a href="{% url 'index' %}">Fragmantica Home</a></h2>
                     </div>
                     <div class="col-auto">
-                        <h1><a href="{% url 'list designers' %}">Designers</a></h1>
+                        <h2><a href="{% url 'list designers' %}">Designers</a></h2>
                     </div>
                     <div class="col-auto">
-                        <h1><a href="{% url 'list perfumes' %}">Perfumes</a></h1>
+                        <h2><a href="{% url 'list perfumes' %}">Perfumes</a></h2>
                     </div>
                     <div class="col-auto">
-                        <h1><a href="{% url 'list notes' %}">Notes</a></h1>
+                        <h2><a href="{% url 'list notes' %}">Notes</a></h2>
                     </div>
                     <div class="col-auto">
-                        <h1><a href="{% url 'list awards' %}">Awards</a></h1>
+                        <h2><a href="{% url 'list awards' %}">Awards</a></h2>
                     </div>
                     <div class="col-auto">
-                        <h1><a href="{% url 'about' %}">About</a></h1>
+                        <h2><a href="{% url 'about' %}">About</a></h2>
                     </div>
 
                     {% if request.user.is_authenticated %}
                         <div class="col-auto">
-                            <h1>Hello,{{ request.user }}</h1>
+                            <h2>Hello,{{ request.user }}</h2>
                         </div>
                         <div class="col-auto">
-                            <h1><a href="{% url 'details user' pk=request.user.pk %}">Profile details</a></h1>
+                            <h2><a href="{% url 'details user' pk=request.user.pk %}">Profile details</a></h2>
                         </div>
                         <div class="col-auto">
-                            <h1><a href="{% url 'logout user' %}">Log out</a></h1>
+                            <h2><a href="{% url 'logout user' %}">Log out</a></h2>
                         </div>
-{#                        <div class="col-auto">#}
-{#                            <h1><a href="{% url 'perfumes per user all' user_id=request.user.pk %}">Your perfumes</a></h1>#}
-{#                        </div>#}
+                        <div class="col-auto">
+                            <h2><a href="{% url 'perfumes per user all' user_id=request.user.pk %}">Your perfumes</a></h2>
+                        </div>
                     {% else %}
                         <div class="col-auto">
-                            <h1><a href="{% url 'login user' %}">Login</a></h1>
+                            <h2><a href="{% url 'login user' %}">Login</a></h2>
                         </div>
                         <div class="col-auto">
-                            <h1><a href="{% url 'register user' %}">Register</a></h1>
+                            <h2><a href="{% url 'register user' %}">Register</a></h2>
                         </div>
                     {% endif %}
 

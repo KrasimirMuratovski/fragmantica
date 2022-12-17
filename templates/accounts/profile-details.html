@@ -9,48 +9,41 @@
                     <div class="card-header"><h3>Your profile details:</h3></div>
                     <div class="card-body">
                         <div>
-                            <img src="{{ object.avatar.url }}" alt="user avatar">
+                            <h4>Avatar:</h4>
+                            {% if object.avatar.url %}
+                                <img src="{{ object.avatar.url }}" style=width:150px; alt="user avatar">
+
+                            {% else %}
+                                <h5>Not yet.</h5>
+                                <br>
+                            {% endif %}
                             <h4>Username: {{ object.username }}</h4>
-
+                            <br>
                             <h4>Email: {{ object.email }}</h4>
-
+                            <br>
                             <h4>First name: {{ object.first_name }}</h4>
-
+                            <br>
                             <h4>Last name: {{ object.last_name }}</h4>
-
+                            <br>
                             {% if object.age %}
                                 <h4>Age: {{ object.age }}</h4>
+                                <br>
                             {% endif %}
 
                             {% if object.gender %}
                                 <h4>Gender: {{ object.gender }}</h4>
+                                <br>
                             {% endif %}
 
                             {% if is_owner %}
-                                 <a class="btn btn-outline-primary" href="{% url 'edit user' pk=request.user.pk %}">Edit profile</a>
-                                <a class="btn btn-warning" href="{% url 'delete user' pk=request.user.pk %}">Delete profile</a>
+                                <a class="btn btn-outline-primary" href="{% url 'edit user' pk=request.user.pk %}">Edit
+                                    profile</a>
+                                <a class="btn btn-warning" href="{% url 'delete user' pk=request.user.pk %}">Delete
+                                    profile</a>
 
+                            {% endif %}<a class="btn btn-outline-secondary"
+                               href="{% url 'perfumes per user all' user_id=user_pk %}">List of your perfumes</a>
 
-{#                                <a href="{% url 'edit user' pk=request.user.pk %}"> Edit profile</a>#}
-{#                                <a href="{% url 'delete user' pk=request.user.pk %}"> Delete profile</a>#}
-                            {% endif %}
-
-
-{#                            <h4>User Perfumes: </h4>#}
-
-                            {#List of perfumes per user#}
-                        <a class="btn btn-outline-secondary" href="{% url 'perfumes per user all' user_id=user_pk %}">List of your perfumes</a>
-{#                            <a href="{% url 'perfumes per user all' user_id=user_pk %}">List of your perfumes: </a>#}
-                            {#End of List of perfumes per user##}
-
-{#                            <h4>User comments: </h4>#}
-
-                            {#List of comments per user#}
-                        <a class="btn btn-outline-warning" href="{% url 'perfume comments per user all' user_id=user_pk %}">List of your
-                                comments</a>
-{#                            <a href="{% url 'perfume comments per user all' user_id=user_pk %}">List of your#}
-{#                                comments: </a>#}
-                            {#End of List of comments per user##}
                         </div>
                         <h1><a class="btn btn-primary" href="javascript:history.back()">Go Back</a></h1>
                     </div>

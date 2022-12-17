@@ -20,7 +20,7 @@
                                 {% for single_perfume in note_perfumes %}
                                     <li>
                                         {#                    TODO:ManyToMany relation - call the _set.id#}
-                                        <a href="{% url 'details perfume' pk=single_perfume.id %}">{{ single_perfume.name }}</a>
+                                        <h4><a href="{% url 'details perfume' pk=single_perfume.id %}">{{ single_perfume.name }}</a></h4>
                                     </li>
                                 {% endfor %}
                             </ul>

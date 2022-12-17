@@ -47,6 +47,28 @@ class PerfumeListView(ListView):
     template_name = 'perfumes/list-perfumes.html'
     model = Perfume
 
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+
+        all_perfumes=Perfume.objects.all()
+        unisex=[]
+        male=[]
+        female=[]
+        for perfume in all_perfumes:
+            if perfume.perfume_category =='unisex':
+                unisex.append(perfume)
+            elif perfume.perfume_category =='male':
+                male.append(perfume)
+            elif perfume.perfume_category =='female':
+                female.append(perfume)
+
+        context['unisex']=unisex
+        context['male']=male
+        context['female']=female
+
+
+        return context
+
 
 
 
@@ -119,14 +141,8 @@ def perfume_comment_view(request, comment_id):
     context = {'form': form, 'comment':comment, 'comment_id':comment_id}
     return render(request, 'perfumes/perfume-comment-view.html',context)
 
-##########Created 08/12/2022AM#############
-@login_required
-def perfume_comments_per_user_all(request, user_id):
-    user_comments=PerfumeComment.objects.filter(user_id=user_id)
-    # user=User.objects.all().get(pk=user_id)
-    # user_comments=user.perfumecomment_set.all()
-    context = {'user_comments':user_comments, }
-    return render(request, 'perfumes/perfume-comments-per-user-all.html',context)
+
+
 #####################
 
 

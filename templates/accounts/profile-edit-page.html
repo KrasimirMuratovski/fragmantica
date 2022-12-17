@@ -8,40 +8,30 @@
                 <div class="card text-bg-light mb-3" style="max-width: 60rem;">
                     <div class="card-header"><h3>Here you can change your profile:</h3></div>
                     <div class="card-body">
+
                         <form method="post" action="{% url 'edit user' pk=object.pk %}"
                               enctype="multipart/form-data">
                             {% for field in form %}
-                                <p class="error"> {{ field.errors }} </p>
-                                <div class="label-input">
-                                    <label>{{ field.label }}</label>
-
-                                    {% if not field.label == "Gender:" %}
-                                        {{ field }}
-
-                                    {% else %}
-                                        <div class="list-choice">
-                                            <div class="list-choice-title">Gender</div>
-                                            <div class="list-choice-objects">
-                                                {% for type, value in form.fields.gender.choices %}
-                                                    <label>
-                                                        <input type="radio" value="{{ value }}" name="gender"
-                                                                {% if form.gender.value == value %}
-                                                               checked
-                                                                {% endif %}/>
-                                                        <span>{{ value }}</span>
-                                                    </label>
-                                                {% endfor %}
-                                            </div>
-                                        </div>
+                                {% if field.label == 'Avatar' %}
+                                    {% if object.avatar.url %}
+                                        <img src="{{ field.initial.url }}" style=width:150px; alt="User avatar">
                                     {% endif %}
-
-                                </div>
-                                <br>
+                                    <div class="label-input">
+                                        <label>{{ field.label }}:</label>
+                                        {{ field }}
+                                    </div>
+                                    <br>
+                                    {#                                    {{ field.initial.url }}#}
+                                {% else %}
+                                    <div class="label-input">
+                                        <label>{{ field.label }}:</label>{{ field }}</div>
+                                    <br>
+                                {% endif %}
                             {% endfor %}
-
                             <button class="edit-btn" type="submit">Edit</button>
                             {% csrf_token %}
                         </form>
+
                     </div>
                     <h1><a class="btn btn-primary" href="javascript:history.back()">Go Back</a></h1>
                 </div>
@@ -50,3 +40,40 @@
     </div>
 
 {% endblock %}
+
+
+
+{#<form method="post" action="{% url 'edit user' pk=object.pk %}"#}
+{#                              enctype="multipart/form-data">#}
+{#                            {% for field in form %}#}
+{#                                <p class="error"> {{ field.errors }} </p>#}
+{#                                <div class="label-input">#}
+{#                                    <label>{{ field.label }}</label>#}
+{##}
+{#                                    {% if not field.label == "Avatar:" %}#}
+{#                                        {{ field }}#}
+{##}
+{#                                    {% else %}#}
+{#                                        <div class="list-choice">#}
+{#                                            <div class="list-choice-title">Gender: </div>#}
+{#                                            <div class="list-choice-objects">#}
+{#                                                {% for type, value in form.fields.gender.choices %}#}
+{#                                                    <label>#}
+{#                                                        <input type="radio" value="{{ value }}" name="gender"#}
+{#                                                                {% if form.gender.value == value %}#}
+{#                                                               checked#}
+{#                                                                {% endif %}/>#}
+{#                                                        <span>{{ value }}</span>#}
+{#                                                    </label>#}
+{#                                                {% endfor %}#}
+{#                                            </div>#}
+{#                                        </div>#}
+{#                                    {% endif %}#}
+{##}
+{#                                </div>#}
+{#                                <br>#}
+{#                            {% endfor %}#}
+{##}
+{#                            <button class="edit-btn" type="submit">Edit</button>#}
+{#                            {% csrf_token %}#}
+{#                        </form>#}

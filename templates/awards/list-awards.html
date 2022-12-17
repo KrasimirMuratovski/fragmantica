@@ -14,7 +14,7 @@
                             <ul>
                                 {% for award in awards %}
                                     <li>
-                                        <h5><a href="{% url 'details award' pk=award.pk %}">{{ award.name }}</a><h5>
+                                        <h4><a href="{% url 'details award' pk=award.pk %}">{{ award.name }}</a><h5>
 {#                                        {{ award.name }}#}
                                     </li>
                                 {% endfor %}

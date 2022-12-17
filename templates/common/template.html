@@ -1,161 +1,34 @@
 {% load static %}
 {% include 'base/nav.html' %}
-
 {% block content %}
     <div class="contaier">
         <div class="card">
-            <div class="card-body card-img-overlay" style="color:darkred;">
-                <h3 class="card-title">Perfume Details</h3>
+            <div class="card-body card-img-overlay" style="color: coral;">
+                <div class="card text-bg-light mb-3" style="max-width: 48rem;">
+                    <div class="card-header">
+                        <h2>Perfume Notes - total count: {{ notes_count }}</h2>
+                    </div>
+                    <div class="card-body">
+                        <div>
+                            <ul>
+                                {% if user_comments %}
+                                    <h2>User comments: </h2>
+                                    {% for user_comment in user_comments %}
+                                        {#            {{ user_comment.pk }}#}
+                                        {{ user_comment.text }}
+                                        {{ user_comment.publication_date_and_time }}
+                                        <a href="{% url 'perfume comment view' comment_id=user_comment.pk %}">Details:{{ user_comment.perfume.name }} </a>
+                                    {% endfor %}
+                                {% else %}
+                                    <h2>No user comments yet! </h2>
 
-                <div class="container">
-                    <div class="row">
-                        <div class="col">
-                            <div class="card" style="width: 54rem;">
-                                <img class="perfume-img" style="width: 400px;" src="{{ perfume.image }}"
-                                     alt='perfume image'/>
-                                <div class="card-body">
-                                    <h5 class="card-title">{{ perfume.name }}</h5>
-                                    <p class="card-text">
-                                    <h4>{{ perfume.released }}</h4>
-                                    <h4>Designer:</h4>
-                                    <a href="{% url 'details designer' pk=perfume.designer_id %}">{{ perfume.designer.name }}</a>
-                                    <h4>Perfume category:</h4>
-                                    <h5>{{ perfume.perfume_category }}</h5>
-
-                                    {#                    Begin of the nested card 2 - perfume notes#}
-                                    <div class="card text-bg-light mb-3" style="max-width: 48rem;">
-                                        <div class="card-body">
-                                            <h4 class="card-title">Main Notes of This Perfume:</h4>
-                                            <div>
-                                                <ul>
-                                                    {% for single_note in perfume_notes %}
-                                                        <li>
-                                                            <p class="card-text">
-                                                                <a href="{% url 'details note' pk=single_note.id %}">{{ single_note.name }}</a>
-                                                        </li>
-                                                    {% endfor %}
-                                                </ul>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    {#                    End of the nested card 2 - perfume notes#}
-
-
-                                </div>
-                            </div>
+                                {% endif %}
+                            </ul>
                         </div>
-                        <div class="col">
-                            {#                    Begin of the nested card 3 - perfume award#}
-                            <div class="card text-bg-light mb-3" style="max-width: 48rem;">
-                                <div class="card-body">
-                                    <h4 class="card-title">Award:</h4>
-                                    <div>
-                                        {% if perfume.award %}
-                                            <p class="card-text">
-                                            <h5>{{ perfume.award.name }}</h5>
-                                        {% else %}
-                                            <h4>Not yet awards for this perfume</h4>
-                                        {% endif %}
-                                    </div>
-                                </div>
-                            </div>
-                            {#                    End of the nested card 3 - perfume notes#}
-
-                            {#                    Begin of the nested card 4 - perfume relation#}
-                            <div class="card text-bg-light mb-3" style="max-width: 48rem;">
-                                <div class="card-body">
-                                    <h4 class="card-title">Your emotional relation to this perfume:</h4>
-                                    <div>
-                                        {% if request.user.is_authenticated %}
-                                            <p class="card-text">
-                                            <h5>{{ perfume_possession }}</h5>
-
-                                            {#                                        Posession form start#}
-                                            <form method="post"
-                                                  action="{% url 'possession perfume' perfume_id=perfume.pk %}">
-                                                {{ possession_form }}
-                                                <button type="submit">Choose</button>
-                                                {% csrf_token %}
-                                            </form>
-                                            {#                                        Posession form end#}
-                                        {% else %}
-                                            <h5>Please <a href="{% url 'register user' %}">register</a> or <a
-                                                    href="{% url 'login user' %}">login</a> to define. </h5>
-                                        {% endif %}
-                                    </div>
-                                </div>
-                            </div>
-                            {#                    End of the nested card 4 - perfume relation#}
-
-                            {#                    Begin of the nested card 5 - Comment form#}
-                        </div>
-                        <div class="col">
-                            {#                    Begin of the nested card 5 - Comment form#}
-                            <div class="card text-bg-light mb-3" style="max-width: 48rem;">
-                                <div class="card-body">
-                                    <h4 class="card-title">Add new comment for this perfume:</h4>
-                                    <div>
-                                        {% if request.user.is_authenticated %}
-                                            {#                                        Comment form start#}
-                                            <form method="post"
-                                                  action="{% url 'comment perfume' perfume_id=perfume.pk %}">
-                                                {{ comment_form }}
-                                                <button type="submit">Post</button>
-                                                {% csrf_token %}
-                                            </form>
-                                            {#                                        Posession form end#}
-                                        {% else %}
-                                            <h5>Please <a href="{% url 'register user' %}">register</a> or <a
-                                                    href="{% url 'login user' %}">login</a> to comment. </h5>
-                                        {% endif %}
-                                    </div>
-                                </div>
-                            </div>
-                            {#                    End of the nested card 5 - Comment form#}
-
-
-                            {#                    Begin of the nested card 6 - perfume comments#}
-                            <div class="card text-bg-light mb-3" style="max-width: 48rem;">
-                                <div class="card-body">
-                                    <h4 class="card-title">Perfume comments:</h4>
-                                    <div>
-                                        {% if perfume_comments %}
-                                            <p class="card-text">
-                                                {% for perfume_comment in perfume_comments %}
-                                                    <div class="card">
-                                                        <div class="text">
-                                                            <ul>
-                                                                <h4>{{ perfume_comment.user }} {{ perfume_comment.publication_date_and_time }}</h4>
-                                                                {#                                                            <h4>{{ perfume_comment.user }}</h4>#}
-                                                                <h4>{{ perfume_comment.text }}</h4>
-                                                                {#                                                            <h4>{{ perfume_comment.id }}</h4>#}
-                                                                {% if perfume_comment.user == request_user %}
-                                                                    <a href="{% url 'perfume comment edit' comment_id=perfume_comment.id %}">Edit
-                                                                        comment</a>
-                                                                    <a href="{% url 'perfume comment delete' comment_id=perfume_comment.id %}">Delete
-                                                                        comment</a>
-                                                                {% endif %}
-                                                            </ul>
-                                                        </div>
-                                                    </div>
-                                                {% endfor %}
-                                        {% else %}
-                                            <h4>Not yet comments for this perfume</h4>
-                                        {% endif %}
-                                    </div>
-                                </div>
-                            </div>
-                            {#                    End of the nested card 6 - perfume comments#}
-                        </div>
+                        <h1><a class="btn btn-primary" href="javascript:history.back()">Go Back</a></h1>
                     </div>
                 </div>
-
             </div>
-            {#            End of the nested card 1#}
-            <h1><a class="btn btn-primary" href="javascript:history.back()">Go Back</a></h1>
         </div>
-
     </div>
-
-
 {% endblock %}
